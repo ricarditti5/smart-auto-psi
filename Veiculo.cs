@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Projeto_Smart_Auto
     //interface para as classes derivadas de veiculo
     interface ISensor
     {
-        void DetectarObstaculos();
+        string DetectarObstaculos();
     }
 
     abstract class VeiculoMotorizado
@@ -30,10 +31,21 @@ namespace Projeto_Smart_Auto
                 if(this.placa == " ") {
                     placa = $"Introduza Os Dados da Placa";
                 }
+                else
+                {
+                    placa = value;
+                }
             }
         }
         public string typeVeiculo { get; set; }
         public string marca { get; set; }
+
+        public Veiculo(string placa, string typeVeiculo, string marca)
+        {
+            this.placa = placa;
+            this.typeVeiculo = typeVeiculo;
+            this.marca = marca;
+        }
 
         public string Acelerar()
         {
@@ -42,7 +54,7 @@ namespace Projeto_Smart_Auto
             //....
             // posicaoCarro++; fazer com a diferença dos kilometros totais com o tempo
         }
-        public string Travao(string typeVeiculo, string marca)
+        public string Travar(string typeVeiculo, string marca)
         {
             //.....
             //posicaoCarro = 0; pra fazer ele parar ou posicaoCarro --; por x tempo determindado
@@ -82,16 +94,23 @@ namespace Projeto_Smart_Auto
     class Carro : Veiculo, ISensor
     {
         //declaração de variáveis
-        
-        
-        //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
-        public Carro()
+        private double potenciaHp;
+        public double PotenciaHp
         {
-
+            get { return potenciaHp; }
+            set {potenciaHp = value; }
         }
-        public void DetectarObstaculos()
-        {
 
+        //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
+        public Carro(double potenciaHp,string placa, string typeVeiculo, string marca) : base(placa,typeVeiculo, marca)
+        {
+            this.potenciaHp = potenciaHp;
+        }
+
+        //possivel chamar metodos Acelerar() e Travar()
+        public string DetectarObstaculos()
+        {
+            return $"Cuidado com o obstaculo";
         }
     }
 }
