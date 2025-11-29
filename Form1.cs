@@ -23,6 +23,9 @@ using System.Windows.Forms;
  Classe abstrata: VeiculoMotorizado
  Uso do base nos construtores
 se possível: criar carro autónomo com comportamento especial.
+
+Utilizar o metodo Lista para cadastrar usuários(´Primeira pagina meio que o login, dps
+o dasboard principal e o simulador de veiculos em movimento
  */
 namespace Projeto_Smart_Auto
 {
