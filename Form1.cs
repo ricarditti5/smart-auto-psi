@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 /*
 # Documentação passo-a-passo do Projeto Smart-Auto
 - deve ter 1 classe base;
@@ -27,6 +19,8 @@ se possível: criar carro autónomo com comportamento especial.
 Utilizar o metodo Lista para cadastrar usuários(´Primeira pagina meio que o login, dps
 o dasboard principal e o simulador de veiculos em movimento
  */
+
+//ESTE FORM1 SERÁ APENAS PARA MOSTRAR USUÁRIOS
 namespace Projeto_Smart_Auto
 {
     public partial class Form1 : Form
@@ -35,5 +29,6 @@ namespace Projeto_Smart_Auto
         {
             InitializeComponent();
         }
+        
     }
 }
