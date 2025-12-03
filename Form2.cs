@@ -22,10 +22,15 @@ namespace Projeto_Smart_Auto
 
             //inicializa o list com o primeiro usuario
             listaUsuario.Add(usuario);
-            timer1.Start();
+            //timer1.Start();
             
             // Atualizar o Dashboard para mostrar os dados do usuário atual
             //lblBemVindo.Text = $"Bem-vindo(a), {usuarioAtual.NomeUsuario}!";
+        }
+
+        private void lblBemVindo_Click(object sender, EventArgs e)
+        {
+            lblBemVindo.Text = $"Bem Vindo ao Smart Auto {usuarioActual}";
         }
 
         //para o valor do combustivel
@@ -36,6 +41,12 @@ namespace Projeto_Smart_Auto
                 progressBar1.Value = progressBar1.Value - 10;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
 
         //Codigo do botao de adicionar Novo Usuario
         /*

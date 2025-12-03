@@ -29,41 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPlaca = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdCamioneta = new System.Windows.Forms.RadioButton();
+            this.rdMota = new System.Windows.Forms.RadioButton();
             this.rdCarro = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCriar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnEncherTanque = new System.Windows.Forms.Button();
             this.btnVerOutroUser = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtCor = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnAcelerar = new System.Windows.Forms.Button();
+            this.btnTravar = new System.Windows.Forms.Button();
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada = new System.Windows.Forms.ListBox();
             this.btnAdicionarNovoUser = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblBemVindo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtMarca
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 114);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtMarca.Location = new System.Drawing.Point(21, 114);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(100, 20);
+            this.txtMarca.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(18, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
@@ -73,46 +75,71 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(18, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Placa";
             // 
-            // textBox2
+            // txtPlaca
             // 
-            this.textBox2.Location = new System.Drawing.Point(21, 171);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtPlaca.Location = new System.Drawing.Point(21, 171);
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Size = new System.Drawing.Size(100, 20);
+            this.txtPlaca.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(163, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Modelo do carro";
+            this.label3.Text = "Modelo do Veiculo";
             // 
-            // textBox3
+            // txtModelo
             // 
-            this.textBox3.Location = new System.Drawing.Point(166, 114);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
+            this.txtModelo.Location = new System.Drawing.Point(166, 114);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(100, 20);
+            this.txtModelo.TabIndex = 4;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.rdCamioneta);
+            this.groupBox1.Controls.Add(this.rdMota);
             this.groupBox1.Controls.Add(this.rdCarro);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(21, 208);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 114);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleciona o Tipo de Veiculo";
+            // 
+            // rdCamioneta
+            // 
+            this.rdCamioneta.AutoSize = true;
+            this.rdCamioneta.Location = new System.Drawing.Point(7, 67);
+            this.rdCamioneta.Name = "rdCamioneta";
+            this.rdCamioneta.Size = new System.Drawing.Size(75, 17);
+            this.rdCamioneta.TabIndex = 2;
+            this.rdCamioneta.TabStop = true;
+            this.rdCamioneta.Text = "Camioneta";
+            this.rdCamioneta.UseVisualStyleBackColor = true;
+            // 
+            // rdMota
+            // 
+            this.rdMota.AutoSize = true;
+            this.rdMota.Location = new System.Drawing.Point(7, 44);
+            this.rdMota.Name = "rdMota";
+            this.rdMota.Size = new System.Drawing.Size(49, 17);
+            this.rdMota.TabIndex = 1;
+            this.rdMota.TabStop = true;
+            this.rdMota.Text = "Mota";
+            this.rdMota.UseVisualStyleBackColor = true;
             // 
             // rdCarro
             // 
@@ -125,36 +152,14 @@
             this.rdCarro.Text = "Carro";
             this.rdCarro.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // btnCriar
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(7, 67);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(28, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 79);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCriar.Location = new System.Drawing.Point(28, 344);
+            this.btnCriar.Name = "btnCriar";
+            this.btnCriar.Size = new System.Drawing.Size(137, 79);
+            this.btnCriar.TabIndex = 7;
+            this.btnCriar.Text = "Criar Veiculo";
+            this.btnCriar.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -162,12 +167,13 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
+            this.button2.Text = "Sair";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEncherTanque
             // 
-            this.btnEncherTanque.Location = new System.Drawing.Point(128, 22);
+            this.btnEncherTanque.Location = new System.Drawing.Point(474, 85);
             this.btnEncherTanque.Name = "btnEncherTanque";
             this.btnEncherTanque.Size = new System.Drawing.Size(119, 23);
             this.btnEncherTanque.TabIndex = 9;
@@ -186,44 +192,45 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(163, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Cor";
             // 
-            // textBox4
+            // txtCor
             // 
-            this.textBox4.Location = new System.Drawing.Point(166, 171);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 11;
+            this.txtCor.Location = new System.Drawing.Point(166, 171);
+            this.txtCor.Name = "txtCor";
+            this.txtCor.Size = new System.Drawing.Size(100, 20);
+            this.txtCor.TabIndex = 11;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(13, 22);
+            this.progressBar1.Location = new System.Drawing.Point(359, 85);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 13;
             this.progressBar1.Value = 100;
             // 
-            // button5
+            // btnAcelerar
             // 
-            this.button5.Location = new System.Drawing.Point(422, 397);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAcelerar.Location = new System.Drawing.Point(422, 397);
+            this.btnAcelerar.Name = "btnAcelerar";
+            this.btnAcelerar.Size = new System.Drawing.Size(75, 23);
+            this.btnAcelerar.TabIndex = 15;
+            this.btnAcelerar.Text = "Acelerar";
+            this.btnAcelerar.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnTravar
             // 
-            this.button6.Location = new System.Drawing.Point(575, 397);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnTravar.Location = new System.Drawing.Point(575, 397);
+            this.btnTravar.Name = "btnTravar";
+            this.btnTravar.Size = new System.Drawing.Size(75, 23);
+            this.btnTravar.TabIndex = 16;
+            this.btnTravar.Text = "Travar";
+            this.btnTravar.UseVisualStyleBackColor = true;
             // 
             // é_para_quando_a_movimentacao_do_veiculo_for_criada
             // 
@@ -247,30 +254,42 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblBemVindo
+            // 
+            this.lblBemVindo.AutoSize = true;
+            this.lblBemVindo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblBemVindo.Location = new System.Drawing.Point(37, 38);
+            this.lblBemVindo.Name = "lblBemVindo";
+            this.lblBemVindo.Size = new System.Drawing.Size(128, 13);
+            this.lblBemVindo.TabIndex = 18;
+            this.lblBemVindo.Text = "Bem Vindo ao Smart Auto";
+            this.lblBemVindo.Click += new System.EventHandler(this.lblBemVindo_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(739, 520);
+            this.Controls.Add(this.lblBemVindo);
             this.Controls.Add(this.btnAdicionarNovoUser);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnTravar);
+            this.Controls.Add(this.btnAcelerar);
             this.Controls.Add(this.é_para_quando_a_movimentacao_do_veiculo_for_criada);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtCor);
             this.Controls.Add(this.btnVerOutroUser);
             this.Controls.Add(this.btnEncherTanque);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMarca);
             this.Name = "Form2";
             this.Text = "Smart Auto";
             this.groupBox1.ResumeLayout(false);
@@ -282,27 +301,28 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rdCamioneta;
+        private System.Windows.Forms.RadioButton rdMota;
         private System.Windows.Forms.RadioButton rdCarro;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCriar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnEncherTanque;
         private System.Windows.Forms.Button btnVerOutroUser;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtCor;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnAcelerar;
+        private System.Windows.Forms.Button btnTravar;
         private System.Windows.Forms.ListBox é_para_quando_a_movimentacao_do_veiculo_for_criada;
         private System.Windows.Forms.Button btnAdicionarNovoUser;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblBemVindo;
     }
 }

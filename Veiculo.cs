@@ -38,12 +38,17 @@ namespace Projeto_Smart_Auto
             }
             public string typeVeiculo { get; set; }
             public string marca { get; set; }
+            public string cor { get; set; }
+            public string modelo { get; set; }
 
-            public Veiculo1(string placa, string typeVeiculo, string marca)
+            public Veiculo1(string placa, string typeVeiculo, string marca, string cor, string modelo)
             {
                 this.placa = placa;
                 this.typeVeiculo = typeVeiculo;
                 this.marca = marca;
+                this.cor = cor;
+                this.modelo = modelo;
+
             }
 
             public string Acelerar()
@@ -103,8 +108,8 @@ namespace Projeto_Smart_Auto
                 set { potenciaCV = value; }
             }
 
-            //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
-            public Carro(double potenciaCV, string placa, string typeVeiculo, string marca) : base(placa, typeVeiculo, marca)
+        //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
+        public Carro(double potenciaCV, string placa, string typeVeiculo, string marca, string cor, string modelo) : base(placa, typeVeiculo, marca, cor, modelo)
             {
                 this.potenciaCV = potenciaCV;
             }
@@ -129,7 +134,7 @@ namespace Projeto_Smart_Auto
             }
 
             //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
-            public Mota(double potenciaCV, string placa, string typeVeiculo, string marca) : base(placa, typeVeiculo, marca)
+            public Mota(double potenciaCV, string placa, string typeVeiculo, string marca, string cor, string modelo) : base(placa, typeVeiculo, marca, cor, modelo)
             {
                 this.potenciaCV = potenciaCV;
             }
@@ -150,7 +155,7 @@ namespace Projeto_Smart_Auto
             }
 
             //apenas pra evitar bugs com os valores(vou fazer tds as classes derivadas)
-            public Camioneta(double potenciaCV, string placa, string typeVeiculo, string marca) : base(placa, typeVeiculo, marca)
+            public Camioneta(double potenciaCV, string placa, string typeVeiculo, string marca, string cor, string modelo) : base(placa, typeVeiculo, marca, cor, modelo)
             {
                 this.potenciaCV = potenciaCV;
             }
