@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Projeto_Smart_Auto
 {
-    class User
+    public class User
     {
         public string nome { get; set; }
         public int tlm { get; set; }
         public User(string  nome, int tlm)
         {
             this.nome = nome;
+            this.tlm = tlm;
         }
     }
 }

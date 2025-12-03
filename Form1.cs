@@ -25,10 +25,30 @@ namespace Projeto_Smart_Auto
 {
     public partial class Form1 : Form
     {
+        User user1;
         public Form1()
         {
             InitializeComponent();
         }
-        
+
+        private void btnSair_Click(object sender, System.EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnUser_Click(object sender, System.EventArgs e)
+        {
+            user1 = new User(txtNome.Text, int.Parse(txtTlm.Text));
+
+            // 2. Definir o resultado da caixa de diálogo como OK--gemini
+            // Isso permite que o Form Principal (Dashboard) saiba que o usuário foi adicionado.--gemini
+            this.DialogResult = DialogResult.OK;
+
+            Form2 novoForm = new Form2(user1);
+            this.Hide();
+            novoForm.Show();
+            
+            //fecha o formulario do User
+        }
     }
 }
