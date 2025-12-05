@@ -31,6 +31,8 @@ namespace Projeto_Smart_Auto
             InitializeComponent();
         }
 
+        public User NovoUsuario { get; internal set; }
+
         private void btnSair_Click(object sender, System.EventArgs e)
         {
             Application.Exit();

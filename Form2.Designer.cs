@@ -52,6 +52,8 @@
             this.btnAdicionarNovoUser = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblBemVindo = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPotencia = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +114,7 @@
             this.groupBox1.Controls.Add(this.rdMota);
             this.groupBox1.Controls.Add(this.rdCarro);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(21, 208);
+            this.groupBox1.Location = new System.Drawing.Point(21, 248);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 114);
             this.groupBox1.TabIndex = 6;
@@ -154,12 +156,13 @@
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(28, 344);
+            this.btnCriar.Location = new System.Drawing.Point(28, 384);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(137, 79);
             this.btnCriar.TabIndex = 7;
             this.btnCriar.Text = "Criar Veiculo";
             this.btnCriar.UseVisualStyleBackColor = true;
+            this.btnCriar.Click += new System.EventHandler(this.btnCriar_Click);
             // 
             // button2
             // 
@@ -188,6 +191,7 @@
             this.btnVerOutroUser.TabIndex = 10;
             this.btnVerOutroUser.Text = "Ver Outro Utilizador";
             this.btnVerOutroUser.UseVisualStyleBackColor = true;
+            this.btnVerOutroUser.Click += new System.EventHandler(this.btnVerOutroUser_Click);
             // 
             // label4
             // 
@@ -248,6 +252,7 @@
             this.btnAdicionarNovoUser.TabIndex = 17;
             this.btnAdicionarNovoUser.Text = "Adicionar Utilizador";
             this.btnAdicionarNovoUser.UseVisualStyleBackColor = true;
+            this.btnAdicionarNovoUser.Click += new System.EventHandler(this.btnAdicionarNovoUser_Click);
             // 
             // timer1
             // 
@@ -263,7 +268,23 @@
             this.lblBemVindo.Size = new System.Drawing.Size(128, 13);
             this.lblBemVindo.TabIndex = 18;
             this.lblBemVindo.Text = "Bem Vindo ao Smart Auto";
-            this.lblBemVindo.Click += new System.EventHandler(this.lblBemVindo_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(21, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Potencia do Veiculo";
+            // 
+            // txtPotencia
+            // 
+            this.txtPotencia.Location = new System.Drawing.Point(24, 223);
+            this.txtPotencia.Name = "txtPotencia";
+            this.txtPotencia.Size = new System.Drawing.Size(100, 20);
+            this.txtPotencia.TabIndex = 19;
             // 
             // Form2
             // 
@@ -271,6 +292,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(739, 520);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtPotencia);
             this.Controls.Add(this.lblBemVindo);
             this.Controls.Add(this.btnAdicionarNovoUser);
             this.Controls.Add(this.btnTravar);
@@ -324,5 +347,7 @@
         private System.Windows.Forms.Button btnAdicionarNovoUser;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblBemVindo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPotencia;
     }
 }

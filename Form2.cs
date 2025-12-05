@@ -14,7 +14,9 @@ namespace Projeto_Smart_Auto
     {
         private User usuarioActual;
         private List<User> listaUsuario = new List<User>();
-
+        Carro c1;
+        Mota m1;
+        Camioneta cam1;
         public Form2(User usuario)
         {
             InitializeComponent();
@@ -25,21 +27,14 @@ namespace Projeto_Smart_Auto
             //timer1.Start();
             
             // Atualizar o Dashboard para mostrar os dados do usuário atual
-            //lblBemVindo.Text = $"Bem-vindo(a), {usuarioAtual.NomeUsuario}!";
+            lblBemVindo.Text = $"Bem-vindo(a), {usuarioActual.nome}!";
         }
 
-        private void lblBemVindo_Click(object sender, EventArgs e)
-        {
-            lblBemVindo.Text = $"Bem Vindo ao Smart Auto {usuarioActual}";
-        }
 
         //para o valor do combustivel
         private void timer1_Tick(object sender, EventArgs e)
         {
-           if(progressBar1.Value > 10)
-            {
-                progressBar1.Value = progressBar1.Value - 10;
-            }
+            MessageBox.Show("Em processo de criação");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,22 +42,64 @@ namespace Projeto_Smart_Auto
             Application.Exit();
         }
 
-
-        //Codigo do botao de adicionar Novo Usuario
-        /*
-         using (var addForm = new FormAdicionarUsuario())
+        private void btnAdicionarNovoUser_Click(object sender, EventArgs e)
         {
-            // ShowDialog() bloqueia o formulário Dashboard até que o FormAdicionarUsuario seja fechado.
-            if (addForm.ShowDialog() == DialogResult.OK)
+            MessageBox.Show("Em processo de criação");
+           /* using (var addForm = new Form1())
             {
-                // Se o usuário foi adicionado (DialogResult.OK), obtenha o objeto.
-                Usuario novo = addForm.NovoUsuario;
-                listaUsuarios.Add(novo);
-                MessageBox.Show($"Novo usuário {novo.NomeUsuario} adicionado!");
-                
-                // O dashboard permanece aberto e atualizado.
+                // ShowDialog() bloqueia o formulário Dashboard até que o FormAdicionarUsuario seja fechado.
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Se o usuário foi adicionado (DialogResult.OK), obtenha o objeto.
+                    User novo = addForm.NovoUsuario;
+                    listaUsuario.Add(novo);
+                    MessageBox.Show($"Novo usuário {novo.nome} adicionado!");
+
+
+                    // O dashboard permanece aberto e atualizado.
+                }
+            }*/
+        }
+
+        private void btnVerOutroUser_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Em processo de criação");
+        }
+
+        private void btnCriar_Click(object sender, EventArgs e)
+        {
+            if(rdCarro.Checked == true)
+            {
+                c1 = new Carro(
+                    double.Parse(txtPotencia.Text),
+                    txtPlaca.Text,
+                    txtMarca.Text,
+                    txtCor.Text,
+                    txtModelo.Text);
+                MessageBox.Show($"O Carro da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+            }
+            else if(rdMota.Checked == true)
+            {
+                    m1 = new Mota(
+                        double.Parse(txtPotencia.Text),
+                        txtPlaca.Text,
+                        txtMarca.Text,
+                        txtCor.Text,
+                        txtModelo.Text);
+                    MessageBox.Show($"A Mota da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+            }
+            else if (rdCamioneta.Checked == true)
+            {
+
+                cam1 = new Camioneta(
+                    double.Parse(txtPotencia.Text),
+                    txtPlaca.Text,
+                    txtMarca.Text,
+                    txtCor.Text,
+                    txtModelo.Text);
+                MessageBox.Show($"A Camioneta da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+                //mostrar a imagem da camioneta no espaço
             }
         }
-        */
     }
 }
