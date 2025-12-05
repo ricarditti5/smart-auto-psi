@@ -76,7 +76,8 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-                MessageBox.Show($"O Carro da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+                MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                //mostrar a imagem do carro no espaço
             }
             else if(rdMota.Checked == true)
             {
@@ -86,7 +87,8 @@ namespace Projeto_Smart_Auto
                         txtMarca.Text,
                         txtCor.Text,
                         txtModelo.Text);
-                    MessageBox.Show($"A Mota da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+                    MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                //mostrar a imagem da mota no espaço
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -97,8 +99,12 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-                MessageBox.Show($"A Camioneta da cor {txtCor} Modelo {txtModelo} com a Placa: {txtPlaca} foi criado");
+                MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da camioneta no espaço
+            }
+            else
+            {
+                MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
             }
         }
     }
