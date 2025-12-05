@@ -54,6 +54,10 @@
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPotencia = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTipoCombustivel = new System.Windows.Forms.TextBox();
+            this.lblTanque = new System.Windows.Forms.Label();
+            this.txtLitros = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +118,7 @@
             this.groupBox1.Controls.Add(this.rdMota);
             this.groupBox1.Controls.Add(this.rdCarro);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(21, 248);
+            this.groupBox1.Location = new System.Drawing.Point(24, 271);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 114);
             this.groupBox1.TabIndex = 6;
@@ -156,7 +160,7 @@
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(28, 384);
+            this.btnCriar.Location = new System.Drawing.Point(31, 407);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(137, 79);
             this.btnCriar.TabIndex = 7;
@@ -166,7 +170,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(28, 485);
+            this.button2.Location = new System.Drawing.Point(31, 508);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
@@ -176,16 +180,17 @@
             // 
             // btnEncherTanque
             // 
-            this.btnEncherTanque.Location = new System.Drawing.Point(474, 85);
+            this.btnEncherTanque.Location = new System.Drawing.Point(573, 99);
             this.btnEncherTanque.Name = "btnEncherTanque";
             this.btnEncherTanque.Size = new System.Drawing.Size(119, 23);
             this.btnEncherTanque.TabIndex = 9;
             this.btnEncherTanque.Text = "Encher o Tanque";
             this.btnEncherTanque.UseVisualStyleBackColor = true;
+            this.btnEncherTanque.Click += new System.EventHandler(this.btnEncherTanque_Click);
             // 
             // btnVerOutroUser
             // 
-            this.btnVerOutroUser.Location = new System.Drawing.Point(603, 12);
+            this.btnVerOutroUser.Location = new System.Drawing.Point(736, 12);
             this.btnVerOutroUser.Name = "btnVerOutroUser";
             this.btnVerOutroUser.Size = new System.Drawing.Size(124, 23);
             this.btnVerOutroUser.TabIndex = 10;
@@ -212,7 +217,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(359, 85);
+            this.progressBar1.Location = new System.Drawing.Point(458, 99);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 13;
@@ -220,7 +225,7 @@
             // 
             // btnAcelerar
             // 
-            this.btnAcelerar.Location = new System.Drawing.Point(422, 397);
+            this.btnAcelerar.Location = new System.Drawing.Point(521, 411);
             this.btnAcelerar.Name = "btnAcelerar";
             this.btnAcelerar.Size = new System.Drawing.Size(75, 23);
             this.btnAcelerar.TabIndex = 15;
@@ -229,7 +234,7 @@
             // 
             // btnTravar
             // 
-            this.btnTravar.Location = new System.Drawing.Point(575, 397);
+            this.btnTravar.Location = new System.Drawing.Point(674, 411);
             this.btnTravar.Name = "btnTravar";
             this.btnTravar.Size = new System.Drawing.Size(75, 23);
             this.btnTravar.TabIndex = 16;
@@ -239,14 +244,14 @@
             // é_para_quando_a_movimentacao_do_veiculo_for_criada
             // 
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.FormattingEnabled = true;
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Location = new System.Drawing.Point(359, 114);
+            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Location = new System.Drawing.Point(458, 128);
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Name = "é_para_quando_a_movimentacao_do_veiculo_for_criada";
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Size = new System.Drawing.Size(341, 277);
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.TabIndex = 14;
             // 
             // btnAdicionarNovoUser
             // 
-            this.btnAdicionarNovoUser.Location = new System.Drawing.Point(422, 12);
+            this.btnAdicionarNovoUser.Location = new System.Drawing.Point(555, 12);
             this.btnAdicionarNovoUser.Name = "btnAdicionarNovoUser";
             this.btnAdicionarNovoUser.Size = new System.Drawing.Size(120, 23);
             this.btnAdicionarNovoUser.TabIndex = 17;
@@ -263,7 +268,7 @@
             // 
             this.lblBemVindo.AutoSize = true;
             this.lblBemVindo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBemVindo.Location = new System.Drawing.Point(37, 38);
+            this.lblBemVindo.Location = new System.Drawing.Point(37, 22);
             this.lblBemVindo.Name = "lblBemVindo";
             this.lblBemVindo.Size = new System.Drawing.Size(128, 13);
             this.lblBemVindo.TabIndex = 18;
@@ -286,12 +291,50 @@
             this.txtPotencia.Size = new System.Drawing.Size(100, 20);
             this.txtPotencia.TabIndex = 19;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(163, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(223, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Diz o Tipo de Combustível: Gasolina/Gasoleo";
+            // 
+            // txtTipoCombustivel
+            // 
+            this.txtTipoCombustivel.Location = new System.Drawing.Point(166, 223);
+            this.txtTipoCombustivel.Name = "txtTipoCombustivel";
+            this.txtTipoCombustivel.Size = new System.Drawing.Size(100, 20);
+            this.txtTipoCombustivel.TabIndex = 21;
+            // 
+            // lblTanque
+            // 
+            this.lblTanque.AutoSize = true;
+            this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTanque.Location = new System.Drawing.Point(696, 86);
+            this.lblTanque.Name = "lblTanque";
+            this.lblTanque.Size = new System.Drawing.Size(141, 13);
+            this.lblTanque.TabIndex = 24;
+            this.lblTanque.Text = "Quantos Litros Vais Encher?";
+            // 
+            // txtLitros
+            // 
+            this.txtLitros.Location = new System.Drawing.Point(699, 102);
+            this.txtLitros.Name = "txtLitros";
+            this.txtLitros.Size = new System.Drawing.Size(100, 20);
+            this.txtLitros.TabIndex = 23;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(739, 520);
+            this.ClientSize = new System.Drawing.Size(872, 537);
+            this.Controls.Add(this.lblTanque);
+            this.Controls.Add(this.txtLitros);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtTipoCombustivel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPotencia);
             this.Controls.Add(this.lblBemVindo);
@@ -349,5 +392,9 @@
         private System.Windows.Forms.Label lblBemVindo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPotencia;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTipoCombustivel;
+        private System.Windows.Forms.Label lblTanque;
+        private System.Windows.Forms.TextBox txtLitros;
     }
 }

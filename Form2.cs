@@ -78,6 +78,7 @@ namespace Projeto_Smart_Auto
                     txtModelo.Text);
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem do carro no espaço
+                progressBar1.Value = 100;
             }
             else if(rdMota.Checked == true)
             {
@@ -89,6 +90,7 @@ namespace Projeto_Smart_Auto
                         txtModelo.Text);
                     MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da mota no espaço
+                progressBar1.Value = 100;
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -101,11 +103,33 @@ namespace Projeto_Smart_Auto
                     txtModelo.Text);
                 MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da camioneta no espaço
+                progressBar1.Value = 100;
             }
             else
             {
                 MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
             }
+        }
+
+        private void btnEncherTanque_Click(object sender, EventArgs e)
+        {
+            if (rdCarro.Checked == true)
+            {
+                lblTanque.Text = $"Quantos Litros Vais Encher?";
+
+                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtLitros.Text));
+                progressBar1.Value = 100;
+                MessageBox.Show(valor);
+            }
+            else if (rdMota.Checked == true)
+            {
+
+            }
+            else if (rdCamioneta.Checked == true)
+            {
+
+            }
+            
         }
     }
 }
