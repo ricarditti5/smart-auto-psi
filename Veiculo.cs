@@ -66,15 +66,15 @@ namespace Projeto_Smart_Auto
 
             //metodo que herda do abstract EncherTanque()
             //RadioButtom pra ver o tipo   TxtBox pra quantidade
-            public override string EncherTanque(string tipoCombustivel, double qtdCombustivel)
+            public override string EncherTanque(string tipoCombustivel, double precoTotal)
             {
                 //gasolina = 1.75€
                 //gasoleo = 1.65€
                 //precoTotal = precoUnitario * quantidade;
-                double precoTotal;
+                double qtdCombustivel;
                 double precoCombustivel;
 
-                if (tipoCombustivel == "Gasolina")
+                if (tipoCombustivel == "Gasolina" || tipoCombustivel == "gasolina")
                 {
                     tipoCombustivel = "Gasolina";
                     precoCombustivel = 1.75;
@@ -89,7 +89,7 @@ namespace Projeto_Smart_Auto
                     return "Diga um tipo de Combustível Válido";
                 }
 
-                precoTotal = precoCombustivel * qtdCombustivel;
+            qtdCombustivel = precoTotal / precoCombustivel;
 
                 return $"Colocaste {precoTotal} €({qtdCombustivel} litros) de {tipoCombustivel} no teu Veiculo ";
             }

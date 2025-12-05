@@ -117,17 +117,25 @@ namespace Projeto_Smart_Auto
             {
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
-                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtLitros.Text));
+                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
                 progressBar1.Value = 100;
                 MessageBox.Show(valor);
             }
             else if (rdMota.Checked == true)
             {
+                lblTanque.Text = $"Quantos Litros Vais Encher?";
 
+                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
+                progressBar1.Value = 100;
+                MessageBox.Show(valor);
             }
             else if (rdCamioneta.Checked == true)
             {
+                lblTanque.Text = $"Quantos Litros Vais Encher?";
 
+                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
+                progressBar1.Value = 100;
+                MessageBox.Show(valor);
             }
             
         }

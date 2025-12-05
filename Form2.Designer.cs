@@ -57,7 +57,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtTipoCombustivel = new System.Windows.Forms.TextBox();
             this.lblTanque = new System.Windows.Forms.Label();
-            this.txtLitros = new System.Windows.Forms.TextBox();
+            this.txtQtd = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -314,25 +314,25 @@
             this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
             this.lblTanque.Location = new System.Drawing.Point(696, 86);
             this.lblTanque.Name = "lblTanque";
-            this.lblTanque.Size = new System.Drawing.Size(141, 13);
+            this.lblTanque.Size = new System.Drawing.Size(182, 13);
             this.lblTanque.TabIndex = 24;
-            this.lblTanque.Text = "Quantos Litros Vais Encher?";
+            this.lblTanque.Text = "Quanto de Combustivel vais Encher?";
             // 
-            // txtLitros
+            // txtQtd
             // 
-            this.txtLitros.Location = new System.Drawing.Point(699, 102);
-            this.txtLitros.Name = "txtLitros";
-            this.txtLitros.Size = new System.Drawing.Size(100, 20);
-            this.txtLitros.TabIndex = 23;
+            this.txtQtd.Location = new System.Drawing.Point(699, 102);
+            this.txtQtd.Name = "txtQtd";
+            this.txtQtd.Size = new System.Drawing.Size(100, 20);
+            this.txtQtd.TabIndex = 23;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(872, 537);
+            this.ClientSize = new System.Drawing.Size(884, 537);
             this.Controls.Add(this.lblTanque);
-            this.Controls.Add(this.txtLitros);
+            this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTipoCombustivel);
             this.Controls.Add(this.label5);
@@ -395,6 +395,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTipoCombustivel;
         private System.Windows.Forms.Label lblTanque;
-        private System.Windows.Forms.TextBox txtLitros;
+        private System.Windows.Forms.TextBox txtQtd;
     }
 }
