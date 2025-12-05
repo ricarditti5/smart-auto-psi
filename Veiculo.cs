@@ -91,7 +91,7 @@ namespace Projeto_Smart_Auto
 
             qtdCombustivel = precoTotal / precoCombustivel;
 
-                return $"Colocaste {precoTotal} €({qtdCombustivel} litros) de {tipoCombustivel} no teu Veiculo ";
+                return $"Colocaste {precoTotal} €({qtdCombustivel:F2} litros) de {tipoCombustivel} no teu Veiculo ";
             }
         }
         //
