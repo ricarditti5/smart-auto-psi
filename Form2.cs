@@ -78,7 +78,7 @@ namespace Projeto_Smart_Auto
                     txtModelo.Text);
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem do carro no espaço
-                progressBar1.Value = 100;
+                progressBar1.Value = 80;
             }
             else if(rdMota.Checked == true)
             {
@@ -90,7 +90,7 @@ namespace Projeto_Smart_Auto
                         txtModelo.Text);
                     MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da mota no espaço
-                progressBar1.Value = 100;
+                progressBar1.Value = 80;
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -103,7 +103,7 @@ namespace Projeto_Smart_Auto
                     txtModelo.Text);
                 MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da camioneta no espaço
-                progressBar1.Value = 100;
+                progressBar1.Value = 80;
             }
             else
             {
@@ -118,7 +118,10 @@ namespace Projeto_Smart_Auto
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                 var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                progressBar1.Value = 100;
+                if(double.Parse(txtQtd.Text) < 0.5)
+                {
+                    progressBar1.Value += 50;
+                }
                 MessageBox.Show(valor);
             }
             else if (rdMota.Checked == true)
@@ -126,7 +129,10 @@ namespace Projeto_Smart_Auto
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                 var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                progressBar1.Value = 100;
+                if (double.Parse(txtQtd.Text) < 0.5)
+                {
+                    progressBar1.Value += 50;
+                }
                 MessageBox.Show(valor);
             }
             else if (rdCamioneta.Checked == true)
@@ -134,10 +140,12 @@ namespace Projeto_Smart_Auto
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                 var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                progressBar1.Value = 100;
+                if (double.Parse(txtQtd.Text) < 0.5)
+                {
+                    progressBar1.Value += 50;
+                }
                 MessageBox.Show(valor);
             }
-            
         }
     }
 }

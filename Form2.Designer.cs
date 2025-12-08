@@ -170,17 +170,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(31, 508);
+            this.button2.Location = new System.Drawing.Point(686, 72);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(120, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Sair";
+            this.button2.Text = "Sair do Aplicativo";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEncherTanque
             // 
-            this.btnEncherTanque.Location = new System.Drawing.Point(573, 99);
+            this.btnEncherTanque.Location = new System.Drawing.Point(523, 180);
             this.btnEncherTanque.Name = "btnEncherTanque";
             this.btnEncherTanque.Size = new System.Drawing.Size(119, 23);
             this.btnEncherTanque.TabIndex = 9;
@@ -190,9 +190,9 @@
             // 
             // btnVerOutroUser
             // 
-            this.btnVerOutroUser.Location = new System.Drawing.Point(736, 12);
+            this.btnVerOutroUser.Location = new System.Drawing.Point(686, 43);
             this.btnVerOutroUser.Name = "btnVerOutroUser";
-            this.btnVerOutroUser.Size = new System.Drawing.Size(124, 23);
+            this.btnVerOutroUser.Size = new System.Drawing.Size(120, 23);
             this.btnVerOutroUser.TabIndex = 10;
             this.btnVerOutroUser.Text = "Ver Outro Utilizador";
             this.btnVerOutroUser.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(458, 99);
+            this.progressBar1.Location = new System.Drawing.Point(408, 180);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 13;
@@ -225,7 +225,7 @@
             // 
             // btnAcelerar
             // 
-            this.btnAcelerar.Location = new System.Drawing.Point(521, 411);
+            this.btnAcelerar.Location = new System.Drawing.Point(471, 492);
             this.btnAcelerar.Name = "btnAcelerar";
             this.btnAcelerar.Size = new System.Drawing.Size(75, 23);
             this.btnAcelerar.TabIndex = 15;
@@ -234,7 +234,7 @@
             // 
             // btnTravar
             // 
-            this.btnTravar.Location = new System.Drawing.Point(674, 411);
+            this.btnTravar.Location = new System.Drawing.Point(624, 492);
             this.btnTravar.Name = "btnTravar";
             this.btnTravar.Size = new System.Drawing.Size(75, 23);
             this.btnTravar.TabIndex = 16;
@@ -244,14 +244,14 @@
             // é_para_quando_a_movimentacao_do_veiculo_for_criada
             // 
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.FormattingEnabled = true;
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Location = new System.Drawing.Point(458, 128);
+            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Location = new System.Drawing.Point(408, 209);
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Name = "é_para_quando_a_movimentacao_do_veiculo_for_criada";
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Size = new System.Drawing.Size(341, 277);
             this.é_para_quando_a_movimentacao_do_veiculo_for_criada.TabIndex = 14;
             // 
             // btnAdicionarNovoUser
             // 
-            this.btnAdicionarNovoUser.Location = new System.Drawing.Point(555, 12);
+            this.btnAdicionarNovoUser.Location = new System.Drawing.Point(686, 14);
             this.btnAdicionarNovoUser.Name = "btnAdicionarNovoUser";
             this.btnAdicionarNovoUser.Size = new System.Drawing.Size(120, 23);
             this.btnAdicionarNovoUser.TabIndex = 17;
@@ -312,7 +312,7 @@
             // 
             this.lblTanque.AutoSize = true;
             this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTanque.Location = new System.Drawing.Point(696, 86);
+            this.lblTanque.Location = new System.Drawing.Point(646, 167);
             this.lblTanque.Name = "lblTanque";
             this.lblTanque.Size = new System.Drawing.Size(182, 13);
             this.lblTanque.TabIndex = 24;
@@ -320,7 +320,7 @@
             // 
             // txtQtd
             // 
-            this.txtQtd.Location = new System.Drawing.Point(699, 102);
+            this.txtQtd.Location = new System.Drawing.Point(649, 183);
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(100, 20);
             this.txtQtd.TabIndex = 23;
@@ -330,7 +330,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(884, 537);
+            this.ClientSize = new System.Drawing.Size(827, 537);
             this.Controls.Add(this.lblTanque);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.label6);
