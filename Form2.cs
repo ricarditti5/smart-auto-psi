@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Projeto_Smart_Auto
 {
@@ -79,6 +80,13 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem do carro no espaço
                 progressBar1.Value = 80;
+
+                //Para Deixar as caixas de textos Limpas
+                txtPotencia.Text = "";
+                txtPlaca.Text = "";
+                txtMarca.Text = "";
+                txtCor.Text = "";
+                txtModelo.Text = "";
             }
             else if(rdMota.Checked == true)
             {
@@ -91,6 +99,12 @@ namespace Projeto_Smart_Auto
                     MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da mota no espaço
                 progressBar1.Value = 80;
+
+                txtPotencia.Text = "";
+                txtPlaca.Text = "";
+                txtMarca.Text = "";
+                txtCor.Text = "";
+                txtModelo.Text = "";
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -104,6 +118,12 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem da camioneta no espaço
                 progressBar1.Value = 80;
+
+                txtPotencia.Text = "";
+                txtPlaca.Text = "";
+                txtMarca.Text = "";
+                txtCor.Text = "";
+                txtModelo.Text = "";
             }
             else
             {
@@ -113,39 +133,70 @@ namespace Projeto_Smart_Auto
 
         private void btnEncherTanque_Click(object sender, EventArgs e)
         {
+            CultureInfo ptCulture = new CultureInfo("pt-PT");
+            double quantidadeOuPreco;
+            // 1. Normaliza: Substitui vírgula por ponto
+            string normalizedText = txtQtd.Text.Replace(',', '.');
+
+            // Tentar converter o texto da quantidade/preço
+            if (!double.TryParse(normalizedText, NumberStyles.Any, CultureInfo.InvariantCulture, out quantidadeOuPreco))
+            {
+                MessageBox.Show("Por favor, introduza uma quantidade/preço válida (use vírgula para decimal).", "Erro de Formato");
+            }
+
             if (rdCarro.Checked == true)
             {
+                // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                if (c1 == null)
+                {
+                    MessageBox.Show("Primeiro crie um Carro.");
+                }
+                    
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
-                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                if(double.Parse(txtQtd.Text) < 0.5)
-                {
-                    progressBar1.Value += 50;
-                }
+                //Variavel que recebe o metodo encher tanque e o executa
+                var valor = c1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
+                else { progressBar1.Value += 20; }
                 MessageBox.Show(valor);
             }
             else if (rdMota.Checked == true)
             {
+                // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                if (m1 == null)
+                {
+                    MessageBox.Show("Primeiro crie um Carro.");
+                }
+
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
-                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                if (double.Parse(txtQtd.Text) < 0.5)
-                {
-                    progressBar1.Value += 50;
-                }
+                //Variavel que recebe o metodo encher tanque e o executa
+                var valor = m1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+
+                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
+                else { progressBar1.Value += 20; }
                 MessageBox.Show(valor);
             }
+
             else if (rdCamioneta.Checked == true)
             {
+                // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                if (cam1 == null)
+                {
+                    MessageBox.Show("Primeiro crie um Carro.");
+                }
+
                 lblTanque.Text = $"Quantos Litros Vais Encher?";
 
-                var valor = c1.EncherTanque(txtTipoCombustivel.Text, double.Parse(txtQtd.Text));
-                if (double.Parse(txtQtd.Text) < 0.5)
-                {
-                    progressBar1.Value += 50;
-                }
+                //Variavel que recebe o metodo encher tanque e o executa
+                var valor = cam1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+
+                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
+                else { progressBar1.Value += 20; }
                 MessageBox.Show(valor);
             }
         }
+
+
     }
 }
