@@ -54,12 +54,20 @@ namespace Projeto_Smart_Auto
             else if (veiculoAtual is Mota) { pbVeiculo = pbMota; }
             else if (veiculoAtual is Camioneta) { pbVeiculo = pbCamioneta; }
 
+            if (pbVeiculo != null && pbVeiculo.Visible == true)
+            {
+                int novaPosicaoX = pbVeiculo.Location.X + (int)velocidadeAnimacao;
+                pbVeiculo.Location = new Point(novaPosicaoX, pbVeiculo.Location.Y);
 
-
-
+                // Loop Infinito
+                if (pbVeiculo.Location.X > painelSimulacao.Width)
+                {
+                    pbVeiculo.Location = new Point(-pbVeiculo.Width, pbVeiculo.Location.Y);
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Sair_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -88,26 +96,47 @@ namespace Projeto_Smart_Auto
             MessageBox.Show("Em processo de criação");
         }
 
+        private PictureBox GetPbMota()
+        {
+            return pbMota;
+        }
+
+        private PictureBox GetPbCarro()
+        {
+            return pbCarro;
+        }
+
         private void btnCriar_Click(object sender, EventArgs e)
         {
             pbCarro.Visible = false;
             pbMota.Visible = false;
             pbCamioneta.Visible = false;
 
+            if (string.IsNullOrWhiteSpace(txtPotencia.Text) || string.IsNullOrWhiteSpace(txtPlaca.Text) ||
+        string.IsNullOrWhiteSpace(txtMarca.Text) || string.IsNullOrWhiteSpace(txtCor.Text) ||
+        string.IsNullOrWhiteSpace(txtModelo.Text))
+            {
+                MessageBox.Show("Por favor, preencha todos os campos para criar o veículo.", "Erro de Entrada");
+                return;
+            }
+
             if (rdCarro.Checked == true)
             {
-                pbCarro.Image = Properties.Resources.CarroIcone;
-                pbCarro.Visible = true;
-
-                // Define este como o veículo ativo para a animação
-                veiculoAtual = c1;
-
                 c1 = new Carro(
                     double.Parse(txtPotencia.Text),
                     txtPlaca.Text,
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
+                
+                veiculoAtual = c1;
+
+                pbCarro.Image = Properties.Resources.CarroIcone;
+                pbCarro.Visible = true;
+
+                // Posicionamento inicial
+                pbCarro.Location = new Point(0, pbCarro.Location.Y);
+
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem do carro no espaço
                 progressBar1.Value = 80;
@@ -121,22 +150,26 @@ namespace Projeto_Smart_Auto
             }
             else if(rdMota.Checked == true)
             {
-                pbCarro.Image = Properties.Resources.CarroIcone;
-                pbCarro.Visible = true;
+                m1 = new Mota(
+                    double.Parse(txtPotencia.Text),
+                    txtPlaca.Text,
+                    txtMarca.Text,
+                    txtCor.Text,
+                    txtModelo.Text);
 
-                // Define este como o veículo ativo para a animação
                 veiculoAtual = m1;
 
-                m1 = new Mota(
-                        double.Parse(txtPotencia.Text),
-                        txtPlaca.Text,
-                        txtMarca.Text,
-                        txtCor.Text,
-                        txtModelo.Text);
-                    MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
-                //mostrar a imagem da mota no espaço
+                pbMota.Image = Properties.Resources.MotaIcone;
+                pbMota.Visible = true;
+
+                // Posicionamento inicial
+                pbMota.Location = new Point(0, pbMota.Location.Y);
+
+                MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                //mostrar a imagem do carro no espaço
                 progressBar1.Value = 80;
 
+                //Para Deixar as caixas de textos Limpas
                 txtPotencia.Text = "";
                 txtPlaca.Text = "";
                 txtMarca.Text = "";
@@ -145,22 +178,26 @@ namespace Projeto_Smart_Auto
             }
             else if (rdCamioneta.Checked == true)
             {
-                pbCarro.Image = Properties.Resources.CarroIcone;
-                pbCarro.Visible = true;
-
-                // Define este como o veículo ativo para a animação
-                veiculoAtual = c1;
-
                 cam1 = new Camioneta(
                     double.Parse(txtPotencia.Text),
                     txtPlaca.Text,
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
+
+                veiculoAtual = cam1;
+
+                pbCamioneta.Image = Properties.Resources.CamionetaIcone;
+                pbCamioneta.Visible = true;
+
+                // Posicionamento inicial
+                pbCamioneta.Location = new Point(0, pbCamioneta.Location.Y);
+
                 MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
-                //mostrar a imagem da camioneta no espaço
+                //mostrar a imagem do carro no espaço
                 progressBar1.Value = 80;
 
+                //Para Deixar as caixas de textos Limpas
                 txtPotencia.Text = "";
                 txtPlaca.Text = "";
                 txtMarca.Text = "";

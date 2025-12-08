@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,15 +58,15 @@
             this.txtTipoCombustivel = new System.Windows.Forms.TextBox();
             this.lblTanque = new System.Windows.Forms.Label();
             this.txtQtd = new System.Windows.Forms.TextBox();
-            this.gbVeiculos = new System.Windows.Forms.GroupBox();
             this.pbCamioneta = new System.Windows.Forms.PictureBox();
             this.pbMota = new System.Windows.Forms.PictureBox();
             this.pbCarro = new System.Windows.Forms.PictureBox();
+            this.painelSimulacao = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
-            this.gbVeiculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamioneta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMota)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarro)).BeginInit();
+            this.painelSimulacao.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMarca
@@ -167,7 +168,7 @@
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(31, 407);
+            this.btnCriar.Location = new System.Drawing.Point(66, 391);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(137, 79);
             this.btnCriar.TabIndex = 7;
@@ -183,11 +184,11 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Sair do Aplicativo";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Sair_Click);
             // 
             // btnEncherTanque
             // 
-            this.btnEncherTanque.Location = new System.Drawing.Point(523, 180);
+            this.btnEncherTanque.Location = new System.Drawing.Point(531, 145);
             this.btnEncherTanque.Name = "btnEncherTanque";
             this.btnEncherTanque.Size = new System.Drawing.Size(119, 23);
             this.btnEncherTanque.TabIndex = 9;
@@ -224,7 +225,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(408, 180);
+            this.progressBar1.Location = new System.Drawing.Point(416, 145);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 13;
@@ -232,7 +233,7 @@
             // 
             // btnAcelerar
             // 
-            this.btnAcelerar.Location = new System.Drawing.Point(471, 492);
+            this.btnAcelerar.Location = new System.Drawing.Point(479, 457);
             this.btnAcelerar.Name = "btnAcelerar";
             this.btnAcelerar.Size = new System.Drawing.Size(75, 23);
             this.btnAcelerar.TabIndex = 15;
@@ -241,7 +242,7 @@
             // 
             // btnTravar
             // 
-            this.btnTravar.Location = new System.Drawing.Point(624, 492);
+            this.btnTravar.Location = new System.Drawing.Point(632, 457);
             this.btnTravar.Name = "btnTravar";
             this.btnTravar.Size = new System.Drawing.Size(75, 23);
             this.btnTravar.TabIndex = 16;
@@ -311,7 +312,7 @@
             // 
             this.lblTanque.AutoSize = true;
             this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTanque.Location = new System.Drawing.Point(520, 155);
+            this.lblTanque.Location = new System.Drawing.Point(528, 120);
             this.lblTanque.Name = "lblTanque";
             this.lblTanque.Size = new System.Drawing.Size(182, 13);
             this.lblTanque.TabIndex = 24;
@@ -319,28 +320,15 @@
             // 
             // txtQtd
             // 
-            this.txtQtd.Location = new System.Drawing.Point(649, 183);
+            this.txtQtd.Location = new System.Drawing.Point(657, 148);
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(100, 20);
             this.txtQtd.TabIndex = 23;
             // 
-            // gbVeiculos
-            // 
-            this.gbVeiculos.BackColor = System.Drawing.Color.LemonChiffon;
-            this.gbVeiculos.Controls.Add(this.pbCamioneta);
-            this.gbVeiculos.Controls.Add(this.pbMota);
-            this.gbVeiculos.Controls.Add(this.pbCarro);
-            this.gbVeiculos.Location = new System.Drawing.Point(408, 223);
-            this.gbVeiculos.Name = "gbVeiculos";
-            this.gbVeiculos.Size = new System.Drawing.Size(390, 236);
-            this.gbVeiculos.TabIndex = 25;
-            this.gbVeiculos.TabStop = false;
-            this.gbVeiculos.Text = "Simulador de Veiculos";
-            // 
             // pbCamioneta
             // 
-            this.pbCamioneta.Image = global::Projeto_Smart_Auto.Properties.Resources.camioneta;
-            this.pbCamioneta.Location = new System.Drawing.Point(36, 149);
+            this.pbCamioneta.Image = ((System.Drawing.Image)(resources.GetObject("pbCamioneta.Image")));
+            this.pbCamioneta.Location = new System.Drawing.Point(3, 128);
             this.pbCamioneta.Name = "pbCamioneta";
             this.pbCamioneta.Size = new System.Drawing.Size(100, 50);
             this.pbCamioneta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -349,31 +337,41 @@
             // 
             // pbMota
             // 
-            this.pbMota.Image = global::Projeto_Smart_Auto.Properties.Resources.mota;
-            this.pbMota.Location = new System.Drawing.Point(36, 93);
+            this.pbMota.Image = ((System.Drawing.Image)(resources.GetObject("pbMota.Image")));
+            this.pbMota.Location = new System.Drawing.Point(3, 62);
             this.pbMota.Name = "pbMota";
-            this.pbMota.Size = new System.Drawing.Size(82, 50);
+            this.pbMota.Size = new System.Drawing.Size(81, 60);
             this.pbMota.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMota.TabIndex = 1;
             this.pbMota.TabStop = false;
             // 
             // pbCarro
             // 
-            this.pbCarro.Image = global::Projeto_Smart_Auto.Properties.Resources.transferir;
-            this.pbCarro.Location = new System.Drawing.Point(36, 37);
+            this.pbCarro.Image = ((System.Drawing.Image)(resources.GetObject("pbCarro.Image")));
+            this.pbCarro.Location = new System.Drawing.Point(3, 11);
             this.pbCarro.Name = "pbCarro";
             this.pbCarro.Size = new System.Drawing.Size(100, 50);
             this.pbCarro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCarro.TabIndex = 0;
             this.pbCarro.TabStop = false;
             // 
+            // painelSimulacao
+            // 
+            this.painelSimulacao.Controls.Add(this.pbCarro);
+            this.painelSimulacao.Controls.Add(this.pbCamioneta);
+            this.painelSimulacao.Controls.Add(this.pbMota);
+            this.painelSimulacao.Location = new System.Drawing.Point(419, 196);
+            this.painelSimulacao.Name = "painelSimulacao";
+            this.painelSimulacao.Size = new System.Drawing.Size(387, 224);
+            this.painelSimulacao.TabIndex = 26;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(827, 537);
-            this.Controls.Add(this.gbVeiculos);
+            this.ClientSize = new System.Drawing.Size(827, 487);
+            this.Controls.Add(this.painelSimulacao);
             this.Controls.Add(this.lblTanque);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.label6);
@@ -402,10 +400,10 @@
             this.Text = "Smart Auto";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.gbVeiculos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCamioneta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMota)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarro)).EndInit();
+            this.painelSimulacao.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,9 +439,9 @@
         private System.Windows.Forms.TextBox txtTipoCombustivel;
         private System.Windows.Forms.Label lblTanque;
         private System.Windows.Forms.TextBox txtQtd;
-        private System.Windows.Forms.GroupBox gbVeiculos;
         private System.Windows.Forms.PictureBox pbCamioneta;
         private System.Windows.Forms.PictureBox pbMota;
         private System.Windows.Forms.PictureBox pbCarro;
+        private System.Windows.Forms.Panel painelSimulacao;
     }
 }
