@@ -8,16 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Projeto_Smart_Auto
 {
     public partial class Form2 : Form
     {
+        //Variaveis para manipular o estado dos Usuários e seus dashboards
         private User usuarioActual;
         private List<User> listaUsuario = new List<User>();
+
+        //variaveis do type of classes
         Carro c1;
         Mota m1;
         Camioneta cam1;
+
+        // Variável para armazenar o veículo ativo e sua velocidade (ou estado)
+        private Veiculo1 veiculoAtual;
+        private double velocidadeAnimacao = 5.0; // Velocidade em pixels por tick
+
+        //construtor do formulários
         public Form2(User usuario)
         {
             InitializeComponent();
@@ -33,9 +43,20 @@ namespace Projeto_Smart_Auto
 
 
         //para o valor do combustivel
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timerMovimento_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("Em processo de criação");
+            PictureBox pbVeiculo = null;
+
+            /*varifica se a variavel pbVeciulo é type de uma das classes derivadas
+            e faz com que o pbVeciulo fique com o valor da pictureBox, se for carro
+            mota ou camioneta*/
+            if (veiculoAtual is Carro) { pbVeiculo = pbCarro; }
+            else if (veiculoAtual is Mota) { pbVeiculo = pbMota; }
+            else if (veiculoAtual is Camioneta) { pbVeiculo = pbCamioneta; }
+
+
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -69,8 +90,18 @@ namespace Projeto_Smart_Auto
 
         private void btnCriar_Click(object sender, EventArgs e)
         {
-            if(rdCarro.Checked == true)
+            pbCarro.Visible = false;
+            pbMota.Visible = false;
+            pbCamioneta.Visible = false;
+
+            if (rdCarro.Checked == true)
             {
+                pbCarro.Image = Properties.Resources.CarroIcone;
+                pbCarro.Visible = true;
+
+                // Define este como o veículo ativo para a animação
+                veiculoAtual = c1;
+
                 c1 = new Carro(
                     double.Parse(txtPotencia.Text),
                     txtPlaca.Text,
@@ -90,7 +121,13 @@ namespace Projeto_Smart_Auto
             }
             else if(rdMota.Checked == true)
             {
-                    m1 = new Mota(
+                pbCarro.Image = Properties.Resources.CarroIcone;
+                pbCarro.Visible = true;
+
+                // Define este como o veículo ativo para a animação
+                veiculoAtual = m1;
+
+                m1 = new Mota(
                         double.Parse(txtPotencia.Text),
                         txtPlaca.Text,
                         txtMarca.Text,
@@ -108,6 +145,11 @@ namespace Projeto_Smart_Auto
             }
             else if (rdCamioneta.Checked == true)
             {
+                pbCarro.Image = Properties.Resources.CarroIcone;
+                pbCarro.Visible = true;
+
+                // Define este como o veículo ativo para a animação
+                veiculoAtual = c1;
 
                 cam1 = new Camioneta(
                     double.Parse(txtPotencia.Text),
@@ -130,7 +172,7 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
             }
         }
-
+        //metodo EncherTanque
         private void btnEncherTanque_Click(object sender, EventArgs e)
         {
             CultureInfo ptCulture = new CultureInfo("pt-PT");
@@ -196,7 +238,5 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show(valor);
             }
         }
-
-
     }
 }

@@ -48,9 +48,8 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnAcelerar = new System.Windows.Forms.Button();
             this.btnTravar = new System.Windows.Forms.Button();
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada = new System.Windows.Forms.ListBox();
             this.btnAdicionarNovoUser = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerMovimento = new System.Windows.Forms.Timer(this.components);
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPotencia = new System.Windows.Forms.TextBox();
@@ -58,7 +57,15 @@
             this.txtTipoCombustivel = new System.Windows.Forms.TextBox();
             this.lblTanque = new System.Windows.Forms.Label();
             this.txtQtd = new System.Windows.Forms.TextBox();
+            this.gbVeiculos = new System.Windows.Forms.GroupBox();
+            this.pbCamioneta = new System.Windows.Forms.PictureBox();
+            this.pbMota = new System.Windows.Forms.PictureBox();
+            this.pbCarro = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            this.gbVeiculos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCamioneta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarro)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMarca
@@ -241,14 +248,6 @@
             this.btnTravar.Text = "Travar";
             this.btnTravar.UseVisualStyleBackColor = true;
             // 
-            // é_para_quando_a_movimentacao_do_veiculo_for_criada
-            // 
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.FormattingEnabled = true;
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Location = new System.Drawing.Point(408, 209);
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Name = "é_para_quando_a_movimentacao_do_veiculo_for_criada";
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.Size = new System.Drawing.Size(341, 277);
-            this.é_para_quando_a_movimentacao_do_veiculo_for_criada.TabIndex = 14;
-            // 
             // btnAdicionarNovoUser
             // 
             this.btnAdicionarNovoUser.Location = new System.Drawing.Point(686, 14);
@@ -259,10 +258,10 @@
             this.btnAdicionarNovoUser.UseVisualStyleBackColor = true;
             this.btnAdicionarNovoUser.Click += new System.EventHandler(this.btnAdicionarNovoUser_Click);
             // 
-            // timer1
+            // timerMovimento
             // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerMovimento.Interval = 500;
+            this.timerMovimento.Tick += new System.EventHandler(this.timerMovimento_Tick);
             // 
             // lblBemVindo
             // 
@@ -312,7 +311,7 @@
             // 
             this.lblTanque.AutoSize = true;
             this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTanque.Location = new System.Drawing.Point(646, 167);
+            this.lblTanque.Location = new System.Drawing.Point(520, 155);
             this.lblTanque.Name = "lblTanque";
             this.lblTanque.Size = new System.Drawing.Size(182, 13);
             this.lblTanque.TabIndex = 24;
@@ -325,12 +324,56 @@
             this.txtQtd.Size = new System.Drawing.Size(100, 20);
             this.txtQtd.TabIndex = 23;
             // 
+            // gbVeiculos
+            // 
+            this.gbVeiculos.BackColor = System.Drawing.Color.LemonChiffon;
+            this.gbVeiculos.Controls.Add(this.pbCamioneta);
+            this.gbVeiculos.Controls.Add(this.pbMota);
+            this.gbVeiculos.Controls.Add(this.pbCarro);
+            this.gbVeiculos.Location = new System.Drawing.Point(408, 223);
+            this.gbVeiculos.Name = "gbVeiculos";
+            this.gbVeiculos.Size = new System.Drawing.Size(390, 236);
+            this.gbVeiculos.TabIndex = 25;
+            this.gbVeiculos.TabStop = false;
+            this.gbVeiculos.Text = "Simulador de Veiculos";
+            // 
+            // pbCamioneta
+            // 
+            this.pbCamioneta.Image = global::Projeto_Smart_Auto.Properties.Resources.camioneta;
+            this.pbCamioneta.Location = new System.Drawing.Point(36, 149);
+            this.pbCamioneta.Name = "pbCamioneta";
+            this.pbCamioneta.Size = new System.Drawing.Size(100, 50);
+            this.pbCamioneta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbCamioneta.TabIndex = 2;
+            this.pbCamioneta.TabStop = false;
+            // 
+            // pbMota
+            // 
+            this.pbMota.Image = global::Projeto_Smart_Auto.Properties.Resources.mota;
+            this.pbMota.Location = new System.Drawing.Point(36, 93);
+            this.pbMota.Name = "pbMota";
+            this.pbMota.Size = new System.Drawing.Size(82, 50);
+            this.pbMota.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMota.TabIndex = 1;
+            this.pbMota.TabStop = false;
+            // 
+            // pbCarro
+            // 
+            this.pbCarro.Image = global::Projeto_Smart_Auto.Properties.Resources.transferir;
+            this.pbCarro.Location = new System.Drawing.Point(36, 37);
+            this.pbCarro.Name = "pbCarro";
+            this.pbCarro.Size = new System.Drawing.Size(100, 50);
+            this.pbCarro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCarro.TabIndex = 0;
+            this.pbCarro.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(827, 537);
+            this.Controls.Add(this.gbVeiculos);
             this.Controls.Add(this.lblTanque);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.label6);
@@ -341,7 +384,6 @@
             this.Controls.Add(this.btnAdicionarNovoUser);
             this.Controls.Add(this.btnTravar);
             this.Controls.Add(this.btnAcelerar);
-            this.Controls.Add(this.é_para_quando_a_movimentacao_do_veiculo_for_criada);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCor);
@@ -360,6 +402,10 @@
             this.Text = "Smart Auto";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gbVeiculos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbCamioneta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,9 +432,8 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnAcelerar;
         private System.Windows.Forms.Button btnTravar;
-        private System.Windows.Forms.ListBox é_para_quando_a_movimentacao_do_veiculo_for_criada;
         private System.Windows.Forms.Button btnAdicionarNovoUser;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerMovimento;
         private System.Windows.Forms.Label lblBemVindo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPotencia;
@@ -396,5 +441,9 @@
         private System.Windows.Forms.TextBox txtTipoCombustivel;
         private System.Windows.Forms.Label lblTanque;
         private System.Windows.Forms.TextBox txtQtd;
+        private System.Windows.Forms.GroupBox gbVeiculos;
+        private System.Windows.Forms.PictureBox pbCamioneta;
+        private System.Windows.Forms.PictureBox pbMota;
+        private System.Windows.Forms.PictureBox pbCarro;
     }
 }
