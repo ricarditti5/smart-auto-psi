@@ -221,58 +221,80 @@ namespace Projeto_Smart_Auto
             if (!double.TryParse(normalizedText, NumberStyles.Any, CultureInfo.InvariantCulture, out quantidadeOuPreco))
             {
                 MessageBox.Show("Por favor, introduza uma quantidade/preço válida (use vírgula para decimal).", "Erro de Formato");
+                return;
             }
 
-            if (rdCarro.Checked == true)
+            try
             {
-                // Certifique-se de que c1 foi inicializado em btnCriar_Click
-                if (c1 == null)
+                if (rdCarro.Checked == true)
                 {
-                    MessageBox.Show("Primeiro crie um Carro.");
-                }
-                    
-                lblTanque.Text = $"Quantos Litros Vais Encher?";
+                    // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                    if (c1 == null)
+                    {
+                        MessageBox.Show("Primeiro crie um Carro.");
+                        return;
+                    }
 
-                //Variavel que recebe o metodo encher tanque e o executa
-                var valor = c1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
-                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
-                else { progressBar1.Value += 20; }
-                MessageBox.Show(valor);
+                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+
+                    //Variavel que recebe o metodo encher tanque e o executa
+                    var valor = c1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
+                    else { progressBar1.Value += 20; }
+                    MessageBox.Show(valor);
+                }
+                else if (rdMota.Checked == true)
+                {
+                    // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                    if (m1 == null)
+                    {
+                        MessageBox.Show("Primeiro crie uma Mota.");
+                        return;
+                    }
+
+                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+
+                    //Variavel que recebe o metodo encher tanque e o executa
+                    var valor = m1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+
+                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
+                    else { progressBar1.Value += 20; }
+                    MessageBox.Show(valor);
+                }
+
+                else if (rdCamioneta.Checked == true)
+                {
+                    // Certifique-se de que c1 foi inicializado em btnCriar_Click
+                    if (cam1 == null)
+                    {
+                        MessageBox.Show("Primeiro crie uma Cmaioneta.");
+                        return;
+                    }
+
+                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+
+                    //Variavel que recebe o metodo encher tanque e o executa
+                    var valor = cam1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+
+                    if (quantidadeOuPreco < 2.5) { progressBar1.Value += 50; }
+                    else { progressBar1.Value += 20; }
+                    MessageBox.Show(valor);
+                }
             }
-            else if (rdMota.Checked == true)
+            catch(FormatException ex)
             {
-                // Certifique-se de que c1 foi inicializado em btnCriar_Click
-                if (m1 == null)
-                {
-                    MessageBox.Show("Primeiro crie um Carro.");
-                }
-
-                lblTanque.Text = $"Quantos Litros Vais Encher?";
-
-                //Variavel que recebe o metodo encher tanque e o executa
-                var valor = m1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
-
-                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
-                else { progressBar1.Value += 20; }
-                MessageBox.Show(valor);
+                // Captura se o double.TryParse falhou, embora o 'if' deva apanhar isto primeiro.
+                MessageBox.Show("Ocorreu um erro de formato de dados. Por favor, verifique os campos.", $"Erro {ex}");
             }
-
-            else if (rdCamioneta.Checked == true)
+            catch (NullReferenceException ex)
             {
-                // Certifique-se de que c1 foi inicializado em btnCriar_Click
-                if (cam1 == null)
-                {
-                    MessageBox.Show("Primeiro crie um Carro.");
-                }
-
-                lblTanque.Text = $"Quantos Litros Vais Encher?";
-
-                //Variavel que recebe o metodo encher tanque e o executa
-                var valor = cam1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
-
-                if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
-                else { progressBar1.Value += 20; }
-                MessageBox.Show(valor);
+                // Captura se, por algum motivo, um objeto c1/m1/cam1 não foi criado (apesar do 'if' acima).
+                MessageBox.Show("O veículo não foi criado ou referenciado corretamente. Tente criar o veículo primeiro.", $"Erro de Objeto {ex}");
+            }
+            catch (Exception ex)
+            {
+                // Captura qualquer outro erro inesperado (ex: dentro do EncherTanque)
+                MessageBox.Show($"Ocorreu um erro inesperado: {ex.Message}", "Erro Crítico");
             }
         }
     }
