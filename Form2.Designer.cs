@@ -239,6 +239,7 @@
             this.btnAcelerar.TabIndex = 15;
             this.btnAcelerar.Text = "Acelerar";
             this.btnAcelerar.UseVisualStyleBackColor = true;
+            this.btnAcelerar.Click += new System.EventHandler(this.btnAcelerar_Click);
             // 
             // btnTravar
             // 
@@ -248,6 +249,7 @@
             this.btnTravar.TabIndex = 16;
             this.btnTravar.Text = "Travar";
             this.btnTravar.UseVisualStyleBackColor = true;
+            this.btnTravar.Click += new System.EventHandler(this.btnTravar_Click);
             // 
             // btnAdicionarNovoUser
             // 

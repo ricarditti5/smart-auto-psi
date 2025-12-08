@@ -27,6 +27,8 @@ namespace Projeto_Smart_Auto
         private Veiculo1 veiculoAtual;
         private double velocidadeAnimacao = 5.0; // Velocidade em pixels por tick
 
+        
+
         //construtor do formulários
         public Form2(User usuario)
         {
@@ -39,6 +41,11 @@ namespace Projeto_Smart_Auto
             
             // Atualizar o Dashboard para mostrar os dados do usuário atual
             lblBemVindo.Text = $"Bem-vindo(a), {usuarioActual.nome}!";
+            
+            //para esconder as imagens ao inicializar o form2
+            pbCarro.Visible = false;
+            pbMota.Visible = false;
+            pbCamioneta.Visible = false;
         }
 
 
@@ -47,7 +54,7 @@ namespace Projeto_Smart_Auto
         {
             PictureBox pbVeiculo = null;
 
-            /*varifica se a variavel pbVeciulo é type de uma das classes derivadas
+            /*verifica se a variavel pbVeciulo é type de uma das classes derivadas
             e faz com que o pbVeciulo fique com o valor da pictureBox, se for carro
             mota ou camioneta*/
             if (veiculoAtual is Carro) { pbVeiculo = pbCarro; }
@@ -96,22 +103,8 @@ namespace Projeto_Smart_Auto
             MessageBox.Show("Em processo de criação");
         }
 
-        private PictureBox GetPbMota()
-        {
-            return pbMota;
-        }
-
-        private PictureBox GetPbCarro()
-        {
-            return pbCarro;
-        }
-
         private void btnCriar_Click(object sender, EventArgs e)
         {
-            pbCarro.Visible = false;
-            pbMota.Visible = false;
-            pbCamioneta.Visible = false;
-
             if (string.IsNullOrWhiteSpace(txtPotencia.Text) || string.IsNullOrWhiteSpace(txtPlaca.Text) ||
         string.IsNullOrWhiteSpace(txtMarca.Text) || string.IsNullOrWhiteSpace(txtCor.Text) ||
         string.IsNullOrWhiteSpace(txtModelo.Text))
@@ -296,6 +289,16 @@ namespace Projeto_Smart_Auto
                 // Captura qualquer outro erro inesperado (ex: dentro do EncherTanque)
                 MessageBox.Show($"Ocorreu um erro inesperado: {ex.Message}", "Erro Crítico");
             }
+        }
+
+        private void btnAcelerar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Em processo de criação");
+        }
+
+        private void btnTravar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Em processo de criação");
         }
     }
 }
