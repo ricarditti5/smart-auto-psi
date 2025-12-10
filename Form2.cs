@@ -26,8 +26,14 @@ namespace Projeto_Smart_Auto
         // Variável para armazenar o veículo ativo e sua velocidade (ou estado)
         private Veiculo1 veiculoAtual;
         private double velocidadeAnimacao = 5.0; // Velocidade em pixels por tick
+        private readonly double INCREMENTO_VELOCIDADE = 0.5; // O quanto a velocidade aumenta
+        private readonly double VELOCIDADE_MAXIMA = 15.0; // Limite para a velocidade
 
-        
+        // Defina estas variáveis no topo da sua classe Form2 para que sejam acessíveis
+        private readonly int POSICAO_INICIAL_X = 5;
+        private readonly int POSICAO_INICIAL_Y = 10;
+        private readonly int LIMITE_MAXIMO_PARAGEM = 600; // Exemplo: A área segura vai até o pixel X=600
+
 
         //construtor do formulários
         public Form2(User usuario)
@@ -140,6 +146,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
+                txtTipoCombustivel.Text = "";
             }
             else if(rdMota.Checked == true)
             {
@@ -168,6 +175,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
+                txtTipoCombustivel.Text = "";
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -196,6 +204,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
+                txtTipoCombustivel.Text = "";
             }
             else
             {
@@ -291,14 +300,88 @@ namespace Projeto_Smart_Auto
             }
         }
 
-        private void btnAcelerar_Click(object sender, EventArgs e)
+            private void btnAcelerar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Em processo de criação");
+            // 1. Verificação de Segurança (o veículo deve existir)
+            if (veiculoAtual == null)
+            {
+                MessageBox.Show("Crie um veículo primeiro antes de acelerar.", "Aviso");
+                return;
+            }
+
+            // 2. Aumentar a Velocidade
+            if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+            {
+                // Aumenta a velocidade se ainda não atingiu o limite
+                velocidadeAnimacao += INCREMENTO_VELOCIDADE;
+                MessageBox.Show($"Velocidade aumentada para: {velocidadeAnimacao} (pixels/tick)", "Acelerar");
+            }
+            else
+            {
+                // Informa que a velocidade máxima foi atingida
+                MessageBox.Show("Velocidade máxima atingida.", "Limite");
+            }
+
+            // 3. Iniciar/Continuar o Movimento
+            // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
+            // Se estiver parado (após Travar), ele recomeça.
+            if (!timerMovimento.Enabled)
+            {
+                timerMovimento.Start();
+            }
         }
 
         private void btnTravar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Em processo de criação");
+            // 1. PARE O MOVIMENTO IMEDIATAMENTE
+            timerMovimento.Stop();
+
+            // 2. Identificar o PictureBox ativo (Lógica espelhada do Timer Tick)
+            PictureBox pbVeiculo = null;
+
+            if (veiculoAtual is Carro)
+            {
+                pbVeiculo = pbCarro;
+            }
+            else if (veiculoAtual is Mota)
+            {
+                pbVeiculo = pbMota;
+            }
+            else if (veiculoAtual is Camioneta)
+            {
+                pbVeiculo = pbCamioneta;
+            }
+
+            // Verificação de segurança
+            if (pbVeiculo == null || pbVeiculo.Visible == false)
+            {
+                MessageBox.Show("Nenhum veículo ativo para parar.", "Aviso");
+                return;
+            }
+
+            // 3. Obter a Posição Atual
+            int posicaoAtualX = pbVeiculo.Location.X;
+
+            // 4. Lógica de Verificação da Posição
+            if (posicaoAtualX > LIMITE_MAXIMO_PARAGEM)
+            {
+                // SE FORA DA ÁREA PERMITIDA: Regressar ao Ponto Inicial
+
+                // Mantemos o Y onde estava, mas o X regressa ao ponto inicial
+                pbVeiculo.Location = new Point(POSICAO_INICIAL_X, pbVeiculo.Location.Y);
+
+                MessageBox.Show($"O veículo parou em X={posicaoAtualX} e estava fora da área segura. Regressou ao ponto inicial ({POSICAO_INICIAL_X}).", "Limite Excedido");
+
+                // (Opcional) Poderá querer zerar o ProgressBar aqui se ele medir a distância
+                // progressBar1.Value = 0; 
+            }
+            else
+            {
+                // SE DENTRO DA ÁREA PERMITIDA: Paragem Segura
+                MessageBox.Show($"O veículo parou com sucesso na posição segura X={posicaoAtualX}.", "Paragem Segura");
+
+                // O veículo mantém a sua posição X e Y atual. Não é necessário mover nada.
+            }
         }
     }
 }
