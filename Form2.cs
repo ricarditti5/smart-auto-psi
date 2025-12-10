@@ -25,7 +25,7 @@ namespace Projeto_Smart_Auto
 
         // Variável para armazenar o veículo ativo e sua velocidade (ou estado)
         private Veiculo1 veiculoAtual;
-        private double velocidadeAnimacao = 5.0; // Velocidade em pixels por tick
+        private double velocidadeAnimacao = 15.0; // Velocidade em pixels por tick
         private readonly double INCREMENTO_VELOCIDADE = 0.5; // O quanto a velocidade aumenta
         private readonly double VELOCIDADE_MAXIMA = 15.0; // Limite para a velocidade
 
@@ -77,6 +77,7 @@ namespace Projeto_Smart_Auto
                 {
                     pbVeiculo.Location = new Point(-pbVeiculo.Width, pbVeiculo.Location.Y);
                 }
+                progressBar1.Value -= 9;
             }
         }
 
@@ -133,7 +134,7 @@ namespace Projeto_Smart_Auto
                 pbCarro.Image = Properties.Resources.CarroIcone;
                 pbCarro.Visible = true;
 
-                // Posicionamento inicial
+                // posição inicial do png do carro
                 pbCarro.Location = new Point(0, pbCarro.Location.Y);
 
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
@@ -146,7 +147,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
-                txtTipoCombustivel.Text = "";
+                cbTipoCombustivel.Text = "";
             }
             else if(rdMota.Checked == true)
             {
@@ -162,7 +163,7 @@ namespace Projeto_Smart_Auto
                 pbMota.Image = Properties.Resources.MotaIcone;
                 pbMota.Visible = true;
 
-                // Posicionamento inicial
+                // posição inicial do png da mota
                 pbMota.Location = new Point(0, pbMota.Location.Y);
 
                 MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
@@ -175,7 +176,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
-                txtTipoCombustivel.Text = "";
+                cbTipoCombustivel.Text = "";
             }
             else if (rdCamioneta.Checked == true)
             {
@@ -191,7 +192,7 @@ namespace Projeto_Smart_Auto
                 pbCamioneta.Image = Properties.Resources.CamionetaIcone;
                 pbCamioneta.Visible = true;
 
-                // Posicionamento inicial
+                // posição inicial do png da camioneta
                 pbCamioneta.Location = new Point(0, pbCamioneta.Location.Y);
 
                 MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
@@ -204,7 +205,7 @@ namespace Projeto_Smart_Auto
                 txtMarca.Text = "";
                 txtCor.Text = "";
                 txtModelo.Text = "";
-                txtTipoCombustivel.Text = "";
+                cbTipoCombustivel.Text = "";
             }
             else
             {
@@ -216,8 +217,19 @@ namespace Projeto_Smart_Auto
         {
             CultureInfo ptCulture = new CultureInfo("pt-PT");
             double quantidadeOuPreco;
+            string tipoCombustivel;
             // 1. Normaliza: Substitui vírgula por ponto
             string normalizedText = txtQtd.Text.Replace(',', '.');
+
+            if(cbTipoCombustivel != null)
+            {
+                tipoCombustivel = cbTipoCombustivel.SelectedItem.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um tipo de combustivel válido");
+                return;
+            }
 
             // Tentar converter o texto da quantidade/preço
             if (!double.TryParse(normalizedText, NumberStyles.Any, CultureInfo.InvariantCulture, out quantidadeOuPreco))
@@ -240,7 +252,7 @@ namespace Projeto_Smart_Auto
                     lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                     //Variavel que recebe o metodo encher tanque e o executa
-                    var valor = c1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+                    var valor = c1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
                     if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
                     else { progressBar1.Value += 20; }
                     MessageBox.Show(valor);
@@ -257,7 +269,7 @@ namespace Projeto_Smart_Auto
                     lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                     //Variavel que recebe o metodo encher tanque e o executa
-                    var valor = m1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+                    var valor = m1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
                     if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
                     else { progressBar1.Value += 20; }
@@ -276,7 +288,7 @@ namespace Projeto_Smart_Auto
                     lblTanque.Text = $"Quantos Litros Vais Encher?";
 
                     //Variavel que recebe o metodo encher tanque e o executa
-                    var valor = cam1.EncherTanque(txtTipoCombustivel.Text, quantidadeOuPreco);
+                    var valor = cam1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
                     if (quantidadeOuPreco < 2.5) { progressBar1.Value += 50; }
                     else { progressBar1.Value += 20; }
@@ -300,7 +312,7 @@ namespace Projeto_Smart_Auto
             }
         }
 
-            private void btnAcelerar_Click(object sender, EventArgs e)
+        private void btnAcelerar_Click(object sender, EventArgs e)
         {
             // 1. Verificação de Segurança (o veículo deve existir)
             if (veiculoAtual == null)
@@ -315,11 +327,11 @@ namespace Projeto_Smart_Auto
                 // Aumenta a velocidade se ainda não atingiu o limite
                 velocidadeAnimacao += INCREMENTO_VELOCIDADE;
                 MessageBox.Show($"Velocidade aumentada para: {velocidadeAnimacao} (pixels/tick)", "Acelerar");
+                progressBar1.Value -= 9;
             }
             else
             {
-                // Informa que a velocidade máxima foi atingida
-                MessageBox.Show("Velocidade máxima atingida.", "Limite");
+                progressBar1.Value -= 12;
             }
 
             // 3. Iniciar/Continuar o Movimento
@@ -371,16 +383,10 @@ namespace Projeto_Smart_Auto
                 pbVeiculo.Location = new Point(POSICAO_INICIAL_X, pbVeiculo.Location.Y);
 
                 MessageBox.Show($"O veículo parou em X={posicaoAtualX} e estava fora da área segura. Regressou ao ponto inicial ({POSICAO_INICIAL_X}).", "Limite Excedido");
-
-                // (Opcional) Poderá querer zerar o ProgressBar aqui se ele medir a distância
-                // progressBar1.Value = 0; 
             }
             else
             {
-                // SE DENTRO DA ÁREA PERMITIDA: Paragem Segura
-                MessageBox.Show($"O veículo parou com sucesso na posição segura X={posicaoAtualX}.", "Paragem Segura");
-
-                // O veículo mantém a sua posição X e Y atual. Não é necessário mover nada.
+                MessageBox.Show($"A travagem do {pbVeiculo} pode ser feita com segurança", "Paragem Segura");
             }
         }
     }

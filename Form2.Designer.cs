@@ -55,13 +55,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPotencia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTipoCombustivel = new System.Windows.Forms.TextBox();
             this.lblTanque = new System.Windows.Forms.Label();
             this.txtQtd = new System.Windows.Forms.TextBox();
             this.pbCamioneta = new System.Windows.Forms.PictureBox();
             this.pbMota = new System.Windows.Forms.PictureBox();
             this.pbCarro = new System.Windows.Forms.PictureBox();
             this.painelSimulacao = new System.Windows.Forms.Panel();
+            this.cbTipoCombustivel = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamioneta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMota)).BeginInit();
@@ -303,13 +303,6 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Diz o Tipo de Combustível: Gasolina/Gasoleo";
             // 
-            // txtTipoCombustivel
-            // 
-            this.txtTipoCombustivel.Location = new System.Drawing.Point(166, 223);
-            this.txtTipoCombustivel.Name = "txtTipoCombustivel";
-            this.txtTipoCombustivel.Size = new System.Drawing.Size(100, 20);
-            this.txtTipoCombustivel.TabIndex = 21;
-            // 
             // lblTanque
             // 
             this.lblTanque.AutoSize = true;
@@ -367,17 +360,28 @@
             this.painelSimulacao.Size = new System.Drawing.Size(387, 224);
             this.painelSimulacao.TabIndex = 26;
             // 
+            // cbTipoCombustivel
+            // 
+            this.cbTipoCombustivel.FormattingEnabled = true;
+            this.cbTipoCombustivel.Items.AddRange(new object[] {
+            "Gasolina",
+            "Gasoleo"});
+            this.cbTipoCombustivel.Location = new System.Drawing.Point(166, 222);
+            this.cbTipoCombustivel.Name = "cbTipoCombustivel";
+            this.cbTipoCombustivel.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoCombustivel.TabIndex = 27;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(827, 487);
+            this.Controls.Add(this.cbTipoCombustivel);
             this.Controls.Add(this.painelSimulacao);
             this.Controls.Add(this.lblTanque);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtTipoCombustivel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPotencia);
             this.Controls.Add(this.lblBemVindo);
@@ -438,12 +442,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPotencia;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTipoCombustivel;
         private System.Windows.Forms.Label lblTanque;
         private System.Windows.Forms.TextBox txtQtd;
         private System.Windows.Forms.PictureBox pbCamioneta;
         private System.Windows.Forms.PictureBox pbMota;
         private System.Windows.Forms.PictureBox pbCarro;
         private System.Windows.Forms.Panel painelSimulacao;
+        private System.Windows.Forms.ComboBox cbTipoCombustivel;
     }
 }
