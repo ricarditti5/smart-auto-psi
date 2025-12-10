@@ -267,7 +267,7 @@
             // 
             // timerMovimento
             // 
-            this.timerMovimento.Interval = 500;
+            this.timerMovimento.Interval = 1500;
             this.timerMovimento.Tick += new System.EventHandler(this.timerMovimento_Tick);
             // 
             // lblBemVindo

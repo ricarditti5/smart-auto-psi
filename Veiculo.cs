@@ -50,22 +50,17 @@ namespace Projeto_Smart_Auto
 
             }
 
-            public string Acelerar()
+            public string Acelerar(double velocidade)
             {
-                return $"O {typeVeiculo}  da Marca {marca} está a Acelerar";
-                //caso for fazer a simulação do carro usar:
-                //....
-                // posicaoCarro++; fazer com a diferença dos kilometros totais com o tempo
+                return $"O {typeVeiculo} está a acelerar a {velocidade} km(kilometros)/hora";
             }
-            public string Travar(string typeVeiculo, string marca)
+            public string Travar()
             {
-                //.....
-                //posicaoCarro = 0; pra fazer ele parar ou posicaoCarro --; por x tempo determindado
-                return $"O {typeVeiculo}  da Marca {marca} está a Travar";
+                return $"O {typeVeiculo} pode fazer uma Travagem segura";
             }
 
             //metodo que herda do abstract EncherTanque()
-            //RadioButtom pra ver o tipo   TxtBox pra quantidade
+            //RadioButtom pra ver o tipo TxtBox pra quantidade
             public override string EncherTanque(string tipoCombustivel, double precoTotal)
             {
                 //gasolina = 1.75€
@@ -94,6 +89,7 @@ namespace Projeto_Smart_Auto
                 return $"Colocaste {precoTotal} €({qtdCombustivel:F2} litros) de {tipoCombustivel} no teu Veiculo ";
             }
         }
+
         //
         //
         //classes derivadas
@@ -123,7 +119,7 @@ namespace Projeto_Smart_Auto
             }
         }
 
-        class Mota : Veiculo1
+       class Mota : Veiculo1
         {
             //posivel chamar o encherTanque e usar a variavel placa
 
@@ -144,7 +140,7 @@ namespace Projeto_Smart_Auto
             //possivel chamar metodos Acelerar() e Travar()
         }
 
-        class Camioneta : Veiculo1, ISensor
+       class Camioneta : Veiculo1, ISensor
         {
             //posivel chamar o encherTanque e usar a variavel placa
 

@@ -84,6 +84,7 @@ namespace Projeto_Smart_Auto
             Application.Exit();
         }
 
+        // em processo de criação
         private void btnAdicionarNovoUser_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Em processo de criação");
@@ -103,12 +104,11 @@ namespace Projeto_Smart_Auto
              }*/
         }
 
-        //em processo de criação
         private void btnVerOutroUser_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Em processo de criação");
         }
-
+        //--------------------------------------------------------------------------
         private void btnCriar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPotencia.Text) || string.IsNullOrWhiteSpace(txtPlaca.Text) ||
@@ -314,6 +314,7 @@ namespace Projeto_Smart_Auto
 
         private void btnAcelerar_Click(object sender, EventArgs e)
         {
+
             // 1. Verificação de Segurança (o veículo deve existir)
             if (veiculoAtual == null)
             {
@@ -321,25 +322,80 @@ namespace Projeto_Smart_Auto
                 return;
             }
 
-            // 2. Aumentar a Velocidade
-            if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+            // 2. Aumentar a Velocidade e verifica como o veiculo age baseado no tipo de veiculo
+            if (veiculoAtual is Carro)
             {
-                // Aumenta a velocidade se ainda não atingiu o limite
-                velocidadeAnimacao += INCREMENTO_VELOCIDADE;
-                MessageBox.Show($"Velocidade aumentada para: {velocidadeAnimacao} (pixels/tick)", "Acelerar");
-                progressBar1.Value -= 9;
+                veiculoAtual = c1;
+                if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+                {
+                    // Aumenta a velocidade se ainda não atingiu o limite
+                    velocidadeAnimacao += INCREMENTO_VELOCIDADE;
+                    MessageBox.Show(c1.Acelerar(velocidadeAnimacao), "Acelerar");
+                    progressBar1.Value -= 9;
+                }
+                else
+                {
+                    MessageBox.Show("Velocidade Máxima Atingida");
+                    progressBar1.Value -= 12;
+                }
+                //coloquei aqui dentro desta verificação para verificar tera bugs e vou fazer nos outros
+                // 3. Iniciar/Continuar o Movimento
+                // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
+                // Se estiver parado (após Travar), ele recomeça.
+                if (!timerMovimento.Enabled)
+                {
+                    timerMovimento.Start();
+                }
+            } 
+            else if(veiculoAtual is Mota)
+            {
+                veiculoAtual = m1;
+                if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+                {
+                    // Aumenta a velocidade se ainda não atingiu o limite
+                    velocidadeAnimacao += INCREMENTO_VELOCIDADE;
+                    MessageBox.Show(m1.Acelerar(velocidadeAnimacao), "Acelerar");
+                    progressBar1.Value -= 9;
+                }
+                else
+                {
+                    MessageBox.Show("Velocidade Máxima Atingida");
+                    progressBar1.Value -= 12;
+                }
+                // 3. Iniciar/Continuar o Movimento
+                // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
+                // Se estiver parado (após Travar), ele recomeça.
+                if (!timerMovimento.Enabled)
+                {
+                    timerMovimento.Start();
+                }
+            }
+            else if(veiculoAtual is Camioneta)
+            {
+                veiculoAtual = cam1;
+                if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+                {
+                    // Aumenta a velocidade se ainda não atingiu o limite
+                    velocidadeAnimacao += INCREMENTO_VELOCIDADE;
+                    MessageBox.Show(cam1.Acelerar(velocidadeAnimacao), "Acelerar");
+                    progressBar1.Value -= 9;
+                }
+                else
+                {
+                    MessageBox.Show("Velocidade Máxima Atingida");
+                    progressBar1.Value -= 12;
+                }
+                // 3. Iniciar/Continuar o Movimento
+                // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
+                // Se estiver parado (após Travar), ele recomeça.
+                if (!timerMovimento.Enabled)
+                {
+                    timerMovimento.Start();
+                }
             }
             else
             {
-                progressBar1.Value -= 12;
-            }
-
-            // 3. Iniciar/Continuar o Movimento
-            // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
-            // Se estiver parado (após Travar), ele recomeça.
-            if (!timerMovimento.Enabled)
-            {
-                timerMovimento.Start();
+                MessageBox.Show("Cria um veiculo primeiro antes de Acelerar");
             }
         }
 
@@ -386,7 +442,18 @@ namespace Projeto_Smart_Auto
             }
             else
             {
-                MessageBox.Show($"A travagem do {pbVeiculo} pode ser feita com segurança", "Paragem Segura");
+                if (veiculoAtual is Carro)
+                {
+                    c1.Travar();
+                }
+                else if (veiculoAtual is Mota)
+                {
+                    m1.Travar();
+                }
+                else if (veiculoAtual is Camioneta)
+                {
+                    cam1.Travar();
+                }
             }
         }
 
