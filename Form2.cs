@@ -120,7 +120,7 @@ namespace Projeto_Smart_Auto
 
                 MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
                 //mostrar a imagem do carro no espaço
-                progressBar1.Value = 80;
+                progressBar1.Value = 100;
 
                 //Para Deixar as caixas de textos Limpas
                 txtPotencia.Text = "";
@@ -231,7 +231,7 @@ namespace Projeto_Smart_Auto
                         return;
                     }
 
-                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+                    lblTanque.Text = $"Quantos Litros Vais Encher?(Valores 1-10)";
 
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = c1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
@@ -436,21 +436,29 @@ namespace Projeto_Smart_Auto
 
         private void btnVerDadosUser_Click(object sender, EventArgs e)
         {
-            string veriVeiculo = "";
-            if (rdCarro.Checked == true) { veriVeiculo = c1.typeVeiculo; }
-            else if (rdMota.Checked == true) { veriVeiculo = m1.typeVeiculo; }
-            else if (rdCamioneta.Checked == true) { veriVeiculo = cam1.typeVeiculo; }
-            else { MessageBox.Show("Crie um veiculo para ver o tipo de User"); }
+            try
+            {
+                string veriVeiculo = "";
 
                 MessageBox.Show($"Dados do Usuário:\n" +
-                    $"Nome do Usuário: {usuarioActual.nome}" +
-                    $"Telemóvel do Usuário: {usuarioActual.tlm}" +
-                    $"Tipo de Veiculo Criado: {veriVeiculo}" +
-                    $"Marca do/a {veriVeiculo}: {txtMarca.Text}" +
-                    $"Modelo do/a {veriVeiculo}: {txtModelo.Text}" +
-                    $"Potência do/a {veriVeiculo}: {txtPotencia.Text}" +
-                    $"Placa do/a {veriVeiculo}: {txtPlaca.Text}" +
-                    $"Tipo de Combustível do/a {veriVeiculo}:{cbTipoCombustivel.SelectedItem.ToString()}");
+                   $"Nome do Usuário: {usuarioActual.nome}\n" +
+                   $"Telemóvel do Usuário: {usuarioActual.tlm}\n" +
+                   $"Tipo de Veiculo Criado: {veriVeiculo}\n" +
+                   $"Marca do/a {veriVeiculo}: {txtMarca.Text}\n" +
+                   $"Modelo do/a {veriVeiculo}: {txtModelo.Text}\n" +
+                   $"Potência do/a {veriVeiculo}: {txtPotencia.Text}\n" +
+                   $"Placa do/a {veriVeiculo}: {txtPlaca.Text}\n" +
+                   $"Tipo de Combustível do/a {veriVeiculo}:{cbTipoCombustivel.SelectedItem.ToString()}");
+
+                if (rdCarro.Checked == true) { veriVeiculo = c1.typeVeiculo; }
+                else if (rdMota.Checked == true) { veriVeiculo = m1.typeVeiculo; }
+                else if (rdCamioneta.Checked == true) { veriVeiculo = cam1.typeVeiculo; }
+                else { MessageBox.Show("Crie um veiculo para ver o tipo de User"); }
+            }
+            catch ( Exception ex)
+            {
+                MessageBox.Show($"Por favor preencha os campos Necessários {ex}");
+            }
         }
         //
         //Secção dos KeyPress
