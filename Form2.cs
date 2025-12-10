@@ -44,7 +44,7 @@ namespace Projeto_Smart_Auto
             listaUsuario.Add(usuario);
 
             // Atualizar o Dashboard para mostrar os dados do usuário atual
-            lblBemVindo.Text = $"Bem-vindo(a), {usuarioActual.nome} ao SmartAuto!";
+            lblBemVindo.Text = $"Bem-vindo(a) ao SmartAuto! ,{usuarioActual.nome} ";
 
             //para esconder as imagens ao inicializar o form2
             pbCarro.Visible = false;
@@ -85,26 +85,37 @@ namespace Projeto_Smart_Auto
         // em processo de criação
         private void btnAdicionarNovoUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Em processo de criação");
-            /* using (var addForm = new Form1())
-             {
-                 // ShowDialog() bloqueia o formulário Dashboard até que o FormAdicionarUsuario seja fechado.
-                 if (addForm.ShowDialog() == DialogResult.OK)
-                 {
-                     // Se o usuário foi adicionado (DialogResult.OK), obtenha o objeto.
-                     User novo = addForm.NovoUsuario;
-                     listaUsuario.Add(novo);
-                     MessageBox.Show($"Novo usuário {novo.nome} adicionado!");
+            Form1 addNovoUser = new Form1();
+            addNovoUser.Show();
 
-
-                     // O dashboard permanece aberto e atualizado.
-                 }
-             }*/
+            this.Close();
         }
 
         private void btnVerOutroUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Em processo de criação");
+            // Verificação de segurança: Deve haver usuários para ver
+            if (listaUsuario.Count == 0)
+            {
+                MessageBox.Show("Não há outros usuários registados para selecionar. Adicione um novo usuário primeiro.", "Aviso");
+                return;
+            }
+
+            // Cria e mostra o novo formulário de seleção
+            // Passamos a lista de todos os usuários
+            using (VerDadosUser formSelecao = new VerDadosUser(listaUsuario))
+            {
+                // Usamos ShowDialog() para bloquear o Form2 até que a seleção seja feita/cancelada
+                if (formSelecao.ShowDialog() == DialogResult.OK)
+                {
+                    User usuarioSelecionado = formSelecao.UsuarioSelecionado;
+
+                    //this.Hide();
+
+                    Form2 novoDashboard = new Form2(usuarioSelecionado);
+                    novoDashboard.Show();
+                }
+                // Se o utilizador cancelar a seleção, o Form2 atual (Dashboard) permanece aberto
+            }
         }
         //--------------------------------------------------------------------------
         private void btnCriar_Click(object sender, EventArgs e)

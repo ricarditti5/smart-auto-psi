@@ -43,13 +43,12 @@
             this.btnCriar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnEncherTanque = new System.Windows.Forms.Button();
-            this.btnVerOutroUser = new System.Windows.Forms.Button();
+            this.btnVerDadosUser = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCor = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnAcelerar = new System.Windows.Forms.Button();
             this.btnTravar = new System.Windows.Forms.Button();
-            this.btnAdicionarNovoUser = new System.Windows.Forms.Button();
             this.timerMovimento = new System.Windows.Forms.Timer(this.components);
             this.lblBemVindo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -181,7 +180,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(686, 72);
+            this.button2.Location = new System.Drawing.Point(686, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 23);
             this.button2.TabIndex = 8;
@@ -199,15 +198,15 @@
             this.btnEncherTanque.UseVisualStyleBackColor = true;
             this.btnEncherTanque.Click += new System.EventHandler(this.btnEncherTanque_Click);
             // 
-            // btnVerOutroUser
+            // btnVerDadosUser
             // 
-            this.btnVerOutroUser.Location = new System.Drawing.Point(686, 43);
-            this.btnVerOutroUser.Name = "btnVerOutroUser";
-            this.btnVerOutroUser.Size = new System.Drawing.Size(120, 23);
-            this.btnVerOutroUser.TabIndex = 10;
-            this.btnVerOutroUser.Text = "Ver Outro Utilizador";
-            this.btnVerOutroUser.UseVisualStyleBackColor = true;
-            this.btnVerOutroUser.Click += new System.EventHandler(this.btnVerOutroUser_Click);
+            this.btnVerDadosUser.Location = new System.Drawing.Point(686, 12);
+            this.btnVerDadosUser.Name = "btnVerDadosUser";
+            this.btnVerDadosUser.Size = new System.Drawing.Size(120, 23);
+            this.btnVerDadosUser.TabIndex = 10;
+            this.btnVerDadosUser.Text = "Ver meus Dados";
+            this.btnVerDadosUser.UseVisualStyleBackColor = true;
+            this.btnVerDadosUser.Click += new System.EventHandler(this.btnVerOutroUser_Click);
             // 
             // label4
             // 
@@ -255,16 +254,6 @@
             this.btnTravar.UseVisualStyleBackColor = true;
             this.btnTravar.Click += new System.EventHandler(this.btnTravar_Click);
             // 
-            // btnAdicionarNovoUser
-            // 
-            this.btnAdicionarNovoUser.Location = new System.Drawing.Point(686, 14);
-            this.btnAdicionarNovoUser.Name = "btnAdicionarNovoUser";
-            this.btnAdicionarNovoUser.Size = new System.Drawing.Size(120, 23);
-            this.btnAdicionarNovoUser.TabIndex = 17;
-            this.btnAdicionarNovoUser.Text = "Adicionar Utilizador";
-            this.btnAdicionarNovoUser.UseVisualStyleBackColor = true;
-            this.btnAdicionarNovoUser.Click += new System.EventHandler(this.btnAdicionarNovoUser_Click);
-            // 
             // timerMovimento
             // 
             this.timerMovimento.Interval = 1500;
@@ -274,7 +263,7 @@
             // 
             this.lblBemVindo.AutoSize = true;
             this.lblBemVindo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBemVindo.Location = new System.Drawing.Point(37, 22);
+            this.lblBemVindo.Location = new System.Drawing.Point(18, 43);
             this.lblBemVindo.Name = "lblBemVindo";
             this.lblBemVindo.Size = new System.Drawing.Size(128, 13);
             this.lblBemVindo.TabIndex = 18;
@@ -392,13 +381,12 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPotencia);
             this.Controls.Add(this.lblBemVindo);
-            this.Controls.Add(this.btnAdicionarNovoUser);
             this.Controls.Add(this.btnTravar);
             this.Controls.Add(this.btnAcelerar);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCor);
-            this.Controls.Add(this.btnVerOutroUser);
+            this.Controls.Add(this.btnVerDadosUser);
             this.Controls.Add(this.btnEncherTanque);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCriar);
@@ -456,5 +444,6 @@
         private System.Windows.Forms.PictureBox pbCarro;
         private System.Windows.Forms.Panel painelSimulacao;
         private System.Windows.Forms.ComboBox cbTipoCombustivel;
+        private System.Windows.Forms.Button btnVerDadosUser;
     }
 }
