@@ -1,9 +1,4 @@
-# Ignorar a pasta de cache do Visual Studio
-.vs/
-
-# Ignorar arquivos binários (executáveis, DLLs)
-[Bb]in/
-[Oo]bj/
-
-# Ignorar arquivos temporários e de log
+.vs
+bin
+obj/
 *.log
