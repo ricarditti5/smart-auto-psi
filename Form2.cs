@@ -72,8 +72,17 @@ namespace Projeto_Smart_Auto
                 if (pbVeiculo.Location.X > painelSimulacao.Width)
                 {
                     pbVeiculo.Location = new Point(-pbVeiculo.Width, pbVeiculo.Location.Y);
+                    if (progressBar1.Value <= 10 )
+                    {
+                        pbVeiculo.Location = new Point(0, pbVeiculo.Location.Y);
+                        MessageBox.Show($"Estás sem {cbTipoCombustivel.SelectedItem} no/a {veiculoAtual.typeVeiculo} enche o Tanque para o {veiculoAtual.typeVeiculo} voltar a andar.");
+                        timerMovimento.Stop();
+                    }
+                    else 
+                    {
+                        progressBar1.Value -= 7;
+                    }
                 }
-                progressBar1.Value -= 9;
             }
         }
 
@@ -82,42 +91,6 @@ namespace Projeto_Smart_Auto
             Application.Exit();
         }
 
-        // em processo de criação
-        private void btnAdicionarNovoUser_Click(object sender, EventArgs e)
-        {
-            Form1 addNovoUser = new Form1();
-            addNovoUser.Show();
-
-            this.Close();
-        }
-
-        private void btnVerOutroUser_Click(object sender, EventArgs e)
-        {
-            // Verificação de segurança: Deve haver usuários para ver
-            if (listaUsuario.Count == 0)
-            {
-                MessageBox.Show("Não há outros usuários registados para selecionar. Adicione um novo usuário primeiro.", "Aviso");
-                return;
-            }
-
-            // Cria e mostra o novo formulário de seleção
-            // Passamos a lista de todos os usuários
-            using (VerDadosUser formSelecao = new VerDadosUser(listaUsuario))
-            {
-                // Usamos ShowDialog() para bloquear o Form2 até que a seleção seja feita/cancelada
-                if (formSelecao.ShowDialog() == DialogResult.OK)
-                {
-                    User usuarioSelecionado = formSelecao.UsuarioSelecionado;
-
-                    //this.Hide();
-
-                    Form2 novoDashboard = new Form2(usuarioSelecionado);
-                    novoDashboard.Show();
-                }
-                // Se o utilizador cancelar a seleção, o Form2 atual (Dashboard) permanece aberto
-            }
-        }
-        //--------------------------------------------------------------------------
         private void btnCriar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPotencia.Text) || string.IsNullOrWhiteSpace(txtPlaca.Text) ||
@@ -136,7 +109,7 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-
+                c1.typeVeiculo = "Carro";
                 veiculoAtual = c1;
 
                 pbCarro.Image = Properties.Resources.CarroIcone;
@@ -165,7 +138,7 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-
+                m1.typeVeiculo = "Mota";
                 veiculoAtual = m1;
 
                 pbMota.Image = Properties.Resources.MotaIcone;
@@ -194,7 +167,7 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-
+                cam1.typeVeiculo = "Camioneta";
                 veiculoAtual = cam1;
 
                 pbCamioneta.Image = Properties.Resources.CamionetaIcone;
@@ -263,7 +236,7 @@ namespace Projeto_Smart_Auto
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = c1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
+                    if (quantidadeOuPreco > 5) { progressBar1.Value += 100; txtQtd.Text = ""; }
                     else { progressBar1.Value += 20; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
@@ -281,7 +254,7 @@ namespace Projeto_Smart_Auto
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = m1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
+                    if (quantidadeOuPreco > 3) { progressBar1.Value += 80; txtQtd.Text = ""; }
                     else { progressBar1.Value += 20; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
@@ -300,8 +273,8 @@ namespace Projeto_Smart_Auto
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = cam1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco < 2.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
-                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
+                    if (quantidadeOuPreco > 4) { progressBar1.Value += 90; txtQtd.Text = ""; }
+                    else { progressBar1.Value += 30; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
             }
@@ -341,12 +314,10 @@ namespace Projeto_Smart_Auto
                     // Aumenta a velocidade se ainda não atingiu o limite
                     velocidadeAnimacao += INCREMENTO_VELOCIDADE;
                     MessageBox.Show(c1.Acelerar(velocidadeAnimacao), "Acelerar");
-                    progressBar1.Value -= 9;
                 }
                 else
                 {
                     MessageBox.Show("Velocidade Máxima Atingida");
-                    progressBar1.Value -= 12;
                 }
                 //coloquei aqui dentro desta verificação para verificar tera bugs e vou fazer nos outros
                 // 3. Iniciar/Continuar o Movimento
@@ -365,12 +336,10 @@ namespace Projeto_Smart_Auto
                     // Aumenta a velocidade se ainda não atingiu o limite
                     velocidadeAnimacao += INCREMENTO_VELOCIDADE;
                     MessageBox.Show(m1.Acelerar(velocidadeAnimacao), "Acelerar");
-                    progressBar1.Value -= 9;
                 }
                 else
                 {
                     MessageBox.Show("Velocidade Máxima Atingida");
-                    progressBar1.Value -= 12;
                 }
                 // 3. Iniciar/Continuar o Movimento
                 // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
@@ -388,12 +357,10 @@ namespace Projeto_Smart_Auto
                     // Aumenta a velocidade se ainda não atingiu o limite
                     velocidadeAnimacao += INCREMENTO_VELOCIDADE;
                     MessageBox.Show(cam1.Acelerar(velocidadeAnimacao), "Acelerar");
-                    progressBar1.Value -= 9;
                 }
                 else
                 {
                     MessageBox.Show("Velocidade Máxima Atingida");
-                    progressBar1.Value -= 12;
                 }
                 // 3. Iniciar/Continuar o Movimento
                 // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
@@ -466,6 +433,25 @@ namespace Projeto_Smart_Auto
                 }
             }
         }
+
+        private void btnVerDadosUser_Click(object sender, EventArgs e)
+        {
+            string veriVeiculo = "";
+            if (rdCarro.Checked == true) { veriVeiculo = c1.typeVeiculo; }
+            else if (rdMota.Checked == true) { veriVeiculo = m1.typeVeiculo; }
+            else if (rdCamioneta.Checked == true) { veriVeiculo = cam1.typeVeiculo; }
+            else { MessageBox.Show("Crie um veiculo para ver o tipo de User"); }
+
+                MessageBox.Show($"Dados do Usuário:\n" +
+                    $"Nome do Usuário: {usuarioActual.nome}" +
+                    $"Telemóvel do Usuário: {usuarioActual.tlm}" +
+                    $"Tipo de Veiculo Criado: {veriVeiculo}" +
+                    $"Marca do/a {veriVeiculo}: {txtMarca.Text}" +
+                    $"Modelo do/a {veriVeiculo}: {txtModelo.Text}" +
+                    $"Potência do/a {veriVeiculo}: {txtPotencia.Text}" +
+                    $"Placa do/a {veriVeiculo}: {txtPlaca.Text}" +
+                    $"Tipo de Combustível do/a {veriVeiculo}:{cbTipoCombustivel.SelectedItem.ToString()}");
+        }
         //
         //Secção dos KeyPress
         //
@@ -485,20 +471,6 @@ namespace Projeto_Smart_Auto
         }
 
         private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permite Backspace e letras
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                // Permite o espaço (para nomes compostos)
-                if (e.KeyChar != ' ')
-                {
-                    // Bloqueia qualquer outra coisa
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void txtPlaca_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permite Backspace e letras
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -585,5 +557,6 @@ namespace Projeto_Smart_Auto
                 }
             }
         }
+
     }
 }

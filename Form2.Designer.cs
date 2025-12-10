@@ -102,7 +102,6 @@
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(100, 20);
             this.txtPlaca.TabIndex = 2;
-            this.txtPlaca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPlaca_KeyPress);
             // 
             // label3
             // 
@@ -206,7 +205,7 @@
             this.btnVerDadosUser.TabIndex = 10;
             this.btnVerDadosUser.Text = "Ver meus Dados";
             this.btnVerDadosUser.UseVisualStyleBackColor = true;
-            this.btnVerDadosUser.Click += new System.EventHandler(this.btnVerOutroUser_Click);
+            this.btnVerDadosUser.Click += new System.EventHandler(this.btnVerDadosUser_Click);
             // 
             // label4
             // 
@@ -256,7 +255,7 @@
             // 
             // timerMovimento
             // 
-            this.timerMovimento.Interval = 1500;
+            this.timerMovimento.Interval = 50;
             this.timerMovimento.Tick += new System.EventHandler(this.timerMovimento_Tick);
             // 
             // lblBemVindo
