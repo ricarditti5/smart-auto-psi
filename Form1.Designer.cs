@@ -53,6 +53,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 1;
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // txtTlm
             // 
@@ -61,6 +62,7 @@
             this.txtTlm.Name = "txtTlm";
             this.txtTlm.Size = new System.Drawing.Size(100, 20);
             this.txtTlm.TabIndex = 2;
+            this.txtTlm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTlm_KeyPress);
             // 
             // btnSair
             // 

@@ -31,7 +31,6 @@ namespace Projeto_Smart_Auto
 
         // Defina estas variáveis no topo da sua classe Form2 para que sejam acessíveis
         private readonly int POSICAO_INICIAL_X = 5;
-        private readonly int POSICAO_INICIAL_Y = 10;
         private readonly int LIMITE_MAXIMO_PARAGEM = 600; // Exemplo: A área segura vai até o pixel X=600
 
 
@@ -43,11 +42,10 @@ namespace Projeto_Smart_Auto
 
             //inicializa o list com o primeiro usuario
             listaUsuario.Add(usuario);
-            //timer1.Start();
-            
+
             // Atualizar o Dashboard para mostrar os dados do usuário atual
-            lblBemVindo.Text = $"Bem-vindo(a), {usuarioActual.nome}!";
-            
+            lblBemVindo.Text = $"Bem-vindo(a), {usuarioActual.nome} ao SmartAuto!";
+
             //para esconder as imagens ao inicializar o form2
             pbCarro.Visible = false;
             pbMota.Visible = false;
@@ -55,7 +53,7 @@ namespace Projeto_Smart_Auto
         }
 
 
-        //para o valor do combustivel
+        //Timer para o movimento dos veiculos
         private void timerMovimento_Tick(object sender, EventArgs e)
         {
             PictureBox pbVeiculo = null;
@@ -89,22 +87,23 @@ namespace Projeto_Smart_Auto
         private void btnAdicionarNovoUser_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Em processo de criação");
-           /* using (var addForm = new Form1())
-            {
-                // ShowDialog() bloqueia o formulário Dashboard até que o FormAdicionarUsuario seja fechado.
-                if (addForm.ShowDialog() == DialogResult.OK)
-                {
-                    // Se o usuário foi adicionado (DialogResult.OK), obtenha o objeto.
-                    User novo = addForm.NovoUsuario;
-                    listaUsuario.Add(novo);
-                    MessageBox.Show($"Novo usuário {novo.nome} adicionado!");
+            /* using (var addForm = new Form1())
+             {
+                 // ShowDialog() bloqueia o formulário Dashboard até que o FormAdicionarUsuario seja fechado.
+                 if (addForm.ShowDialog() == DialogResult.OK)
+                 {
+                     // Se o usuário foi adicionado (DialogResult.OK), obtenha o objeto.
+                     User novo = addForm.NovoUsuario;
+                     listaUsuario.Add(novo);
+                     MessageBox.Show($"Novo usuário {novo.nome} adicionado!");
 
 
-                    // O dashboard permanece aberto e atualizado.
-                }
-            }*/
+                     // O dashboard permanece aberto e atualizado.
+                 }
+             }*/
         }
 
+        //em processo de criação
         private void btnVerOutroUser_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Em processo de criação");
@@ -128,7 +127,7 @@ namespace Projeto_Smart_Auto
                     txtMarca.Text,
                     txtCor.Text,
                     txtModelo.Text);
-                
+
                 veiculoAtual = c1;
 
                 pbCarro.Image = Properties.Resources.CarroIcone;
@@ -149,7 +148,7 @@ namespace Projeto_Smart_Auto
                 txtModelo.Text = "";
                 cbTipoCombustivel.Text = "";
             }
-            else if(rdMota.Checked == true)
+            else if (rdMota.Checked == true)
             {
                 m1 = new Mota(
                     double.Parse(txtPotencia.Text),
@@ -212,7 +211,7 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
             }
         }
-        //metodo EncherTanque
+
         private void btnEncherTanque_Click(object sender, EventArgs e)
         {
             CultureInfo ptCulture = new CultureInfo("pt-PT");
@@ -221,7 +220,7 @@ namespace Projeto_Smart_Auto
             // 1. Normaliza: Substitui vírgula por ponto
             string normalizedText = txtQtd.Text.Replace(',', '.');
 
-            if(cbTipoCombustivel != null)
+            if (cbTipoCombustivel != null)
             {
                 tipoCombustivel = cbTipoCombustivel.SelectedItem.ToString();
             }
@@ -253,8 +252,9 @@ namespace Projeto_Smart_Auto
 
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = c1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
-                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
-                    else { progressBar1.Value += 20; }
+
+                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
+                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
                 else if (rdMota.Checked == true)
@@ -271,8 +271,8 @@ namespace Projeto_Smart_Auto
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = m1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; }
-                    else { progressBar1.Value += 20; }
+                    if (quantidadeOuPreco < 0.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
+                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
 
@@ -290,12 +290,12 @@ namespace Projeto_Smart_Auto
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = cam1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco < 2.5) { progressBar1.Value += 50; }
-                    else { progressBar1.Value += 20; }
+                    if (quantidadeOuPreco < 2.5) { progressBar1.Value += 50; txtQtd.Text = ""; }
+                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 // Captura se o double.TryParse falhou, embora o 'if' deva apanhar isto primeiro.
                 MessageBox.Show("Ocorreu um erro de formato de dados. Por favor, verifique os campos.", $"Erro {ex}");
@@ -387,6 +387,126 @@ namespace Projeto_Smart_Auto
             else
             {
                 MessageBox.Show($"A travagem do {pbVeiculo} pode ser feita com segurança", "Paragem Segura");
+            }
+        }
+
+        //
+        //Secção dos KeyPress
+        //
+        //para quando o user digitar um caracter que não seja number
+        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtPlaca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtCor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtPotencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e dígitos
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o separador decimal (vírgula ou ponto)
+                if (e.KeyChar == ',' || e.KeyChar == '.')
+                {
+                    // Verifica se a caixa de texto já contém um separador
+                    if (((TextBox)sender).Text.Contains(',') || ((TextBox)sender).Text.Contains('.'))
+                    {
+                        // Se já houver um separador, bloqueia a entrada
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    // Bloqueia qualquer outro caractere que não seja dígito, Backspace, vírgula ou ponto
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e dígitos
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o separador decimal (vírgula ou ponto)
+                if (e.KeyChar == ',' || e.KeyChar == '.')
+                {
+                    // Verifica se a caixa de texto já contém um separador
+                    if (((TextBox)sender).Text.Contains(',') || ((TextBox)sender).Text.Contains('.'))
+                    {
+                        // Se já houver um separador, bloqueia a entrada
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    // Bloqueia qualquer outro caractere que não seja dígito, Backspace, vírgula ou ponto
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void cbTipoCombustivel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
             }
         }
     }

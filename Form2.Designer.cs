@@ -75,6 +75,7 @@
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(100, 20);
             this.txtMarca.TabIndex = 0;
+            this.txtMarca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMarca_KeyPress);
             // 
             // label1
             // 
@@ -102,6 +103,7 @@
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(100, 20);
             this.txtPlaca.TabIndex = 2;
+            this.txtPlaca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPlaca_KeyPress);
             // 
             // label3
             // 
@@ -119,6 +121,7 @@
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(100, 20);
             this.txtModelo.TabIndex = 4;
+            this.txtModelo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtModelo_KeyPress);
             // 
             // groupBox1
             // 
@@ -222,6 +225,7 @@
             this.txtCor.Name = "txtCor";
             this.txtCor.Size = new System.Drawing.Size(100, 20);
             this.txtCor.TabIndex = 11;
+            this.txtCor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCor_KeyPress);
             // 
             // progressBar1
             // 
@@ -292,6 +296,7 @@
             this.txtPotencia.Name = "txtPotencia";
             this.txtPotencia.Size = new System.Drawing.Size(100, 20);
             this.txtPotencia.TabIndex = 19;
+            this.txtPotencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPotencia_KeyPress);
             // 
             // label6
             // 
@@ -319,6 +324,7 @@
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(100, 20);
             this.txtQtd.TabIndex = 23;
+            this.txtQtd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQtd_KeyPress);
             // 
             // pbCamioneta
             // 
@@ -370,6 +376,7 @@
             this.cbTipoCombustivel.Name = "cbTipoCombustivel";
             this.cbTipoCombustivel.Size = new System.Drawing.Size(121, 21);
             this.cbTipoCombustivel.TabIndex = 27;
+            this.cbTipoCombustivel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipoCombustivel_KeyPress);
             // 
             // Form2
             // 

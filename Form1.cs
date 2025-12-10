@@ -1,24 +1,5 @@
-﻿using System.Windows.Forms;
-/*
-# Documentação passo-a-passo do Projeto Smart-Auto
-- deve ter 1 classe base;
-- 2-3 classes derivadas(devem herdar da classe base, sobre-escrever um dos metodos, ter diferentes comportamentos);
-- uma das classes ser abstrata
-- implementar na iterface uma das classe
-- ter metodos comuns e usáveis
-- usar keyword base
-- usar polimorfismo
- Classe base Veiculo
- Classes derivadas: Carro, Mota, Camioneta
- Polimorfismo: Acelerar(), Travão()
- Interface: ISensor (ex.: detetar obstáculos)
- Classe abstrata: VeiculoMotorizado
- Uso do base nos construtores
-se possível: criar carro autónomo com comportamento especial.
-
-Utilizar o metodo Lista para cadastrar usuários(´Primeira pagina meio que o login, dps
-o dasboard principal e o simulador de veiculos em movimento
- */
+﻿using System.Linq;
+using System.Windows.Forms;
 
 //ESTE FORM1 SERÁ APENAS PARA MOSTRAR USUÁRIOS
 namespace Projeto_Smart_Auto
@@ -51,6 +32,43 @@ namespace Projeto_Smart_Auto
             novoForm.Show();
             
             //fecha o formulario do User
+        }
+
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e letras
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o espaço (para nomes compostos)
+                if (e.KeyChar != ' ')
+                {
+                    // Bloqueia qualquer outra coisa
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtTlm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite Backspace e dígitos
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Permite o separador decimal (vírgula ou ponto)
+                if (e.KeyChar == ',' || e.KeyChar == '.')
+                {
+                    // Verifica se a caixa de texto já contém um separador
+                    if (((TextBox)sender).Text.Contains(',') || ((TextBox)sender).Text.Contains('.'))
+                    {
+                        // Se já houver um separador, bloqueia a entrada
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    // Bloqueia qualquer outro caractere que não seja dígito, Backspace, vírgula ou ponto
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
