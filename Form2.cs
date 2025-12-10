@@ -51,8 +51,6 @@ namespace Projeto_Smart_Auto
             pbMota.Visible = false;
             pbCamioneta.Visible = false;
         }
-
-
         //Timer para o movimento dos veiculos
         private void timerMovimento_Tick(object sender, EventArgs e)
         {
@@ -215,20 +213,21 @@ namespace Projeto_Smart_Auto
         private void btnEncherTanque_Click(object sender, EventArgs e)
         {
             CultureInfo ptCulture = new CultureInfo("pt-PT");
-            double quantidadeOuPreco;
-            string tipoCombustivel;
-            // 1. Normaliza: Substitui vírgula por ponto
-            string normalizedText = txtQtd.Text.Replace(',', '.');
+            double quantidadeOuPreco = 0;
+            string tipoCombustivel = "";
+            
 
-            if (cbTipoCombustivel != null)
+            if(cbTipoCombustivel.SelectedItem == null)
             {
-                tipoCombustivel = cbTipoCombustivel.SelectedItem.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um tipo de combustivel válido");
+                MessageBox.Show("Selecione um Tipo de Combustivel Válido" , "Caso não Tenhas criado um Veiculo, cria um Veiculo agora");
                 return;
             }
+
+            //o tipo combustivel toma o valor do que está na comboBox
+            tipoCombustivel = cbTipoCombustivel.SelectedItem.ToString();
+
+            //ve se nos numeros tem pontos ou virgulas
+            string normalizedText = txtQtd.Text.Replace(',', '.');
 
             // Tentar converter o texto da quantidade/preço
             if (!double.TryParse(normalizedText, NumberStyles.Any, CultureInfo.InvariantCulture, out quantidadeOuPreco))
@@ -456,7 +455,6 @@ namespace Projeto_Smart_Auto
                 }
             }
         }
-
         //
         //Secção dos KeyPress
         //
