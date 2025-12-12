@@ -110,3 +110,11 @@ Encerra completamente a aplicação e liberta todos os recursos da memória. Usa
 ### `double.TryParse()`
 Uma forma segura de converter texto em números.
 *   **Diferença para `double.Parse()`**: O `Parse` faz o programa "crashar" se o texto for inválido (ex: "abc"). O `TryParse` tenta converter e devolve `false` se falhar, permitindo mostrar uma mensagem de erro amigável sem fechar o programa.
+
+---
+
+## 8. Download
+
+O executável do projeto pode ser encontrado no caminho abaixo.
+[Descarregar Executável (Projeto Smart-Auto.exe)](./bin/Debug/Projeto%20Smart-Auto.exe)
+
