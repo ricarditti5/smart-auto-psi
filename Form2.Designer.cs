@@ -179,7 +179,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(686, 41);
+            this.button2.Location = new System.Drawing.Point(817, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 23);
             this.button2.TabIndex = 8;
@@ -199,7 +199,7 @@
             // 
             // btnVerDadosUser
             // 
-            this.btnVerDadosUser.Location = new System.Drawing.Point(686, 12);
+            this.btnVerDadosUser.Location = new System.Drawing.Point(817, 12);
             this.btnVerDadosUser.Name = "btnVerDadosUser";
             this.btnVerDadosUser.Size = new System.Drawing.Size(120, 23);
             this.btnVerDadosUser.TabIndex = 10;
@@ -300,7 +300,7 @@
             // 
             this.lblTanque.AutoSize = true;
             this.lblTanque.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTanque.Location = new System.Drawing.Point(528, 120);
+            this.lblTanque.Location = new System.Drawing.Point(413, 117);
             this.lblTanque.Name = "lblTanque";
             this.lblTanque.Size = new System.Drawing.Size(182, 13);
             this.lblTanque.TabIndex = 24;
@@ -371,7 +371,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(827, 487);
+            this.ClientSize = new System.Drawing.Size(949, 487);
             this.Controls.Add(this.cbTipoCombustivel);
             this.Controls.Add(this.painelSimulacao);
             this.Controls.Add(this.lblTanque);

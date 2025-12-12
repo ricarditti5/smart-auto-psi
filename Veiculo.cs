@@ -98,7 +98,7 @@ namespace Projeto_Smart_Auto
             //declaração de variáveis
             private double potenciaCV;
 
-        public double PotenciaCV
+            public double PotenciaCV
             {
                 get { return potenciaCV; }
                 set { potenciaCV = value; }

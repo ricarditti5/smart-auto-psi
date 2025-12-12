@@ -14,6 +14,13 @@ namespace Projeto_Smart_Auto
 {
     public partial class Form2 : Form
     {
+        /*
+     Bugs Urgentes a se resolver:
+     - Quando Criar um Novo Veiculo, esconde o actual veiculo e apaga os dados no ver meus dados(criar
+        uma função void que faz isso para reduzir código, talvez outra função para fazer a validação
+        caso tenha se criado o veiculo)
+     - No encher tanque, colocar para que o valor da progress não passe dos 90
+     */
         //Variaveis para manipular o estado dos Usuários e seus dashboards
         private User usuarioActual;
         private List<User> listaUsuario = new List<User>();
@@ -33,6 +40,10 @@ namespace Projeto_Smart_Auto
         private readonly int POSICAO_INICIAL_X = 5;
         private readonly int LIMITE_MAXIMO_PARAGEM = 600; // Exemplo: A área segura vai até o pixel X=600
 
+
+        //Variaveis comuns
+        public int Potencia;
+        PictureBox pbVeiculo = null;
 
         //construtor do formulários
         public Form2(User usuario)
@@ -101,97 +112,103 @@ namespace Projeto_Smart_Auto
                 return;
             }
 
-            if (rdCarro.Checked == true)
-            {
-                c1 = new Carro(
-                    double.Parse(txtPotencia.Text),
-                    txtPlaca.Text,
-                    txtMarca.Text,
-                    txtCor.Text,
-                    txtModelo.Text);
-                c1.typeVeiculo = "Carro";
-                veiculoAtual = c1;
+            //if(veiculoAtual != null)
+            //{
+                
+                if (rdCarro.Checked == true)
+                {
+                    c1 = new Carro(
+                        double.Parse(txtPotencia.Text),
+                        txtPlaca.Text,
+                        txtMarca.Text,
+                        txtCor.Text,
+                        txtModelo.Text);
+                    c1.typeVeiculo = "Carro";
+                    veiculoAtual = c1;
 
-                pbCarro.Image = Properties.Resources.CarroIcone;
-                pbCarro.Visible = true;
+                    pbCarro.Image = Properties.Resources.CarroIcone;
+                    pbCarro.Visible = true;
+                    Potencia = int.Parse(txtPotencia.Text);
+                    // posição inicial do png do carro
+                    pbCarro.Location = new Point(0, pbCarro.Location.Y);
 
-                // posição inicial do png do carro
-                pbCarro.Location = new Point(0, pbCarro.Location.Y);
+                    MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                    //mostrar a imagem do carro no espaço
+                    progressBar1.Value = 100;
 
-                MessageBox.Show($"O Carro da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
-                //mostrar a imagem do carro no espaço
-                progressBar1.Value = 100;
+                    //Para Deixar as caixas de textos Limpas
+                    txtPlaca.Text = "";
+                    txtMarca.Text = "";
+                    txtCor.Text = "";
+                    txtModelo.Text = "";
+                    cbTipoCombustivel.Text = "";
+                }
+                else if (rdMota.Checked == true)
+                {
+                    m1 = new Mota(
+                        double.Parse(txtPotencia.Text),
+                        txtPlaca.Text,
+                        txtMarca.Text,
+                        txtCor.Text,
+                        txtModelo.Text);
+                    m1.typeVeiculo = "Mota";
+                    veiculoAtual = m1;
 
-                //Para Deixar as caixas de textos Limpas
-                txtPotencia.Text = "";
-                txtPlaca.Text = "";
-                txtMarca.Text = "";
-                txtCor.Text = "";
-                txtModelo.Text = "";
-                cbTipoCombustivel.Text = "";
-            }
-            else if (rdMota.Checked == true)
-            {
-                m1 = new Mota(
-                    double.Parse(txtPotencia.Text),
-                    txtPlaca.Text,
-                    txtMarca.Text,
-                    txtCor.Text,
-                    txtModelo.Text);
-                m1.typeVeiculo = "Mota";
-                veiculoAtual = m1;
+                    pbMota.Image = Properties.Resources.MotaIcone;
+                    pbMota.Visible = true;
 
-                pbMota.Image = Properties.Resources.MotaIcone;
-                pbMota.Visible = true;
+                    // posição inicial do png da mota
+                    pbMota.Location = new Point(0, pbMota.Location.Y);
 
-                // posição inicial do png da mota
-                pbMota.Location = new Point(0, pbMota.Location.Y);
+                    MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                    //mostrar a imagem do carro no espaço
+                    progressBar1.Value = 80;
 
-                MessageBox.Show($"A Mota da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
-                //mostrar a imagem do carro no espaço
-                progressBar1.Value = 80;
+                    //Para Deixar as caixas de textos Limpas
+                    txtPlaca.Text = "";
+                    txtMarca.Text = "";
+                    txtCor.Text = "";
+                    txtModelo.Text = "";
+                    cbTipoCombustivel.Text = "";
+                }
+                else if (rdCamioneta.Checked == true)
+                {
+                    cam1 = new Camioneta(
+                        double.Parse(txtPotencia.Text),
+                        txtPlaca.Text,
+                        txtMarca.Text,
+                        txtCor.Text,
+                        txtModelo.Text);
+                    cam1.typeVeiculo = "Camioneta";
+                    veiculoAtual = cam1;
 
-                //Para Deixar as caixas de textos Limpas
-                txtPotencia.Text = "";
-                txtPlaca.Text = "";
-                txtMarca.Text = "";
-                txtCor.Text = "";
-                txtModelo.Text = "";
-                cbTipoCombustivel.Text = "";
-            }
-            else if (rdCamioneta.Checked == true)
-            {
-                cam1 = new Camioneta(
-                    double.Parse(txtPotencia.Text),
-                    txtPlaca.Text,
-                    txtMarca.Text,
-                    txtCor.Text,
-                    txtModelo.Text);
-                cam1.typeVeiculo = "Camioneta";
-                veiculoAtual = cam1;
+                    pbCamioneta.Image = Properties.Resources.CamionetaIcone;
+                    pbCamioneta.Visible = true;
 
-                pbCamioneta.Image = Properties.Resources.CamionetaIcone;
-                pbCamioneta.Visible = true;
+                    // posição inicial do png da camioneta
+                    pbCamioneta.Location = new Point(0, pbCamioneta.Location.Y);
 
-                // posição inicial do png da camioneta
-                pbCamioneta.Location = new Point(0, pbCamioneta.Location.Y);
+                    MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
+                    //mostrar a imagem do carro no espaço
+                    progressBar1.Value = 80;
 
-                MessageBox.Show($"A Camioneta da cor {txtCor.Text}, {txtMarca.Text} Modelo {txtModelo.Text} com a Placa: {txtPlaca.Text} foi criado");
-                //mostrar a imagem do carro no espaço
-                progressBar1.Value = 80;
-
-                //Para Deixar as caixas de textos Limpas
-                txtPotencia.Text = "";
-                txtPlaca.Text = "";
-                txtMarca.Text = "";
-                txtCor.Text = "";
-                txtModelo.Text = "";
-                cbTipoCombustivel.Text = "";
-            }
+                    //Para Deixar as caixas de textos Limpas
+                    txtPlaca.Text = "";
+                    txtMarca.Text = "";
+                    txtCor.Text = "";
+                    txtModelo.Text = "";
+                    cbTipoCombustivel.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
+                }
+           /* }
             else
             {
-                MessageBox.Show("Selecione o tipo de Veiculo que deseja criar");
-            }
+
+            }*/
+            
         }
 
         private void btnEncherTanque_Click(object sender, EventArgs e)
@@ -231,13 +248,16 @@ namespace Projeto_Smart_Auto
                         return;
                     }
 
-                    lblTanque.Text = $"Quantos Litros Vais Encher?(Valores 1-10)";
+                    lblTanque.Text = $"Quanto de Combustível Vais Encher?(Valores 1-10), Caso queiras encher o tanque adicona 5 nos valores";
 
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = c1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco > 5) { progressBar1.Value += 100; txtQtd.Text = ""; }
-                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
+                    if(progressBar1.Value > 100)
+                    {
+                    if (quantidadeOuPreco > 5) { progressBar1.Value = 100; txtQtd.Text = ""; }
+                    else { progressBar1.Value = 80; txtQtd.Text = ""; }
+                    }
                     MessageBox.Show(valor);
                 }
                 else if (rdMota.Checked == true)
@@ -249,13 +269,13 @@ namespace Projeto_Smart_Auto
                         return;
                     }
 
-                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+                    lblTanque.Text = $"Quanto de Combustível Vais Encher?(Valores 1-10), Caso queiras encher o tanque adicona 5 nos valores";
 
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = m1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco > 3) { progressBar1.Value += 80; txtQtd.Text = ""; }
-                    else { progressBar1.Value += 20; txtQtd.Text = ""; }
+                    if (quantidadeOuPreco > 5) { progressBar1.Value = 100; txtQtd.Text = ""; }
+                    else { progressBar1.Value = 80; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
 
@@ -268,13 +288,13 @@ namespace Projeto_Smart_Auto
                         return;
                     }
 
-                    lblTanque.Text = $"Quantos Litros Vais Encher?";
+                    lblTanque.Text = $"Quanto de Combustível Vais Encher?(Valores 1-10), Caso queiras encher o tanque adicona 5 nos valores";
 
                     //Variavel que recebe o metodo encher tanque e o executa
                     var valor = cam1.EncherTanque(tipoCombustivel, quantidadeOuPreco);
 
-                    if (quantidadeOuPreco > 4) { progressBar1.Value += 90; txtQtd.Text = ""; }
-                    else { progressBar1.Value += 30; txtQtd.Text = ""; }
+                    if (quantidadeOuPreco > 5) { progressBar1.Value = 100; txtQtd.Text = ""; }
+                    else { progressBar1.Value = 80; txtQtd.Text = ""; }
                     MessageBox.Show(valor);
                 }
             }
@@ -304,50 +324,38 @@ namespace Projeto_Smart_Auto
                 MessageBox.Show("Crie um veículo primeiro antes de acelerar.", "Aviso");
                 return;
             }
+            //Função para verificar o tipo de veiculoActual
+            VerificarVeiculo();
+            if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
+            {
+                // Aumenta a velocidade se ainda não atingiu o limite
+                velocidadeAnimacao += INCREMENTO_VELOCIDADE;
+                MessageBox.Show(m1.Acelerar(velocidadeAnimacao), "Acelerar");
+            }
+            else
+            {
+                MessageBox.Show("Velocidade Máxima Atingida");
+            }
+            // 3. Iniciar/Continuar o Movimento
+            // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
+            // Se estiver parado (após Travar), ele recomeça.
+            if (!timerMovimento.Enabled)
+            {
+                timerMovimento.Start();
+            }
 
+
+            /*
             // 2. Aumentar a Velocidade e verifica como o veiculo age baseado no tipo de veiculo
             if (veiculoAtual is Carro)
             {
                 veiculoAtual = c1;
-                if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
-                {
-                    // Aumenta a velocidade se ainda não atingiu o limite
-                    velocidadeAnimacao += INCREMENTO_VELOCIDADE;
-                    MessageBox.Show(c1.Acelerar(velocidadeAnimacao), "Acelerar");
-                }
-                else
-                {
-                    MessageBox.Show("Velocidade Máxima Atingida");
-                }
-                //coloquei aqui dentro desta verificação para verificar tera bugs e vou fazer nos outros
-                // 3. Iniciar/Continuar o Movimento
-                // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
-                // Se estiver parado (após Travar), ele recomeça.
-                if (!timerMovimento.Enabled)
-                {
-                    timerMovimento.Start();
-                }
+               
             } 
             else if(veiculoAtual is Mota)
             {
                 veiculoAtual = m1;
-                if (velocidadeAnimacao < VELOCIDADE_MAXIMA)
-                {
-                    // Aumenta a velocidade se ainda não atingiu o limite
-                    velocidadeAnimacao += INCREMENTO_VELOCIDADE;
-                    MessageBox.Show(m1.Acelerar(velocidadeAnimacao), "Acelerar");
-                }
-                else
-                {
-                    MessageBox.Show("Velocidade Máxima Atingida");
-                }
-                // 3. Iniciar/Continuar o Movimento
-                // Se o Timer já estiver ativo, ele continua, mas mais rápido. 
-                // Se estiver parado (após Travar), ele recomeça.
-                if (!timerMovimento.Enabled)
-                {
-                    timerMovimento.Start();
-                }
+               
             }
             else if(veiculoAtual is Camioneta)
             {
@@ -374,16 +382,10 @@ namespace Projeto_Smart_Auto
             {
                 MessageBox.Show("Cria um veiculo primeiro antes de Acelerar");
             }
+            */
         }
-
-        private void btnTravar_Click(object sender, EventArgs e)
+        private void VerificarPbVeiculo()
         {
-            // 1. PARE O MOVIMENTO IMEDIATAMENTE
-            timerMovimento.Stop();
-
-            // 2. Identificar o PictureBox ativo (Lógica espelhada do Timer Tick)
-            PictureBox pbVeiculo = null;
-
             if (veiculoAtual is Carro)
             {
                 pbVeiculo = pbCarro;
@@ -396,7 +398,15 @@ namespace Projeto_Smart_Auto
             {
                 pbVeiculo = pbCamioneta;
             }
+            
+        }
+        private void btnTravar_Click(object sender, EventArgs e)
+        {
+            // 1. PARE O MOVIMENTO IMEDIATAMENTE
+            timerMovimento.Stop();
 
+            // 2. Identificar o PictureBox ativo (Lógica espelhada do Timer Tick)
+            VerificarPbVeiculo();
             // Verificação de segurança
             if (pbVeiculo == null || pbVeiculo.Visible == false)
             {
@@ -434,31 +444,57 @@ namespace Projeto_Smart_Auto
             }
         }
 
+        private void VerificarVeiculo()
+        {
+            if (veiculoAtual is Carro)
+            {
+                veiculoAtual = c1;
+            }
+            else if (veiculoAtual is Mota)
+            {
+                veiculoAtual = m1;
+            }
+            else if (veiculoAtual is Camioneta)
+            {
+                veiculoAtual = cam1;
+            }
+        }
         private void btnVerDadosUser_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string veriVeiculo = "";
+            string veriVeiculo = "";
 
-                MessageBox.Show($"Dados do Usuário:\n" +
-                   $"Nome do Usuário: {usuarioActual.nome}\n" +
-                   $"Telemóvel do Usuário: {usuarioActual.tlm}\n" +
-                   $"Tipo de Veiculo Criado: {veriVeiculo}\n" +
-                   $"Marca do/a {veriVeiculo}: {txtMarca.Text}\n" +
-                   $"Modelo do/a {veriVeiculo}: {txtModelo.Text}\n" +
-                   $"Potência do/a {veriVeiculo}: {txtPotencia.Text}\n" +
-                   $"Placa do/a {veriVeiculo}: {txtPlaca.Text}\n" +
-                   $"Tipo de Combustível do/a {veriVeiculo}:{cbTipoCombustivel.SelectedItem.ToString()}");
+            if (rdCarro.Checked == true) { veriVeiculo = c1.typeVeiculo; }
+            else if (rdMota.Checked == true) { veriVeiculo = m1.typeVeiculo; }
+            else if (rdCamioneta.Checked == true) { veriVeiculo = cam1.typeVeiculo; }
+            else { veriVeiculo = "Nenhum Veiculo Criado"; }
+
+            if (veiculoAtual is Carro)
+            {
+                veiculoAtual = c1;
+            }
+            else if (veiculoAtual is Mota)
+            {
+                veiculoAtual = m1;
+            } else if(veiculoAtual is Camioneta)
+            {
+                veiculoAtual = cam1;
+            }
+            txtPotencia.Text = "";
+            MessageBox.Show($"Dados do Usuário:\n" +
+                       $"Nome do Usuário: {usuarioActual.nome}\n" +
+                       $"Telemóvel do Usuário: {usuarioActual.tlm}\n" +
+                       $"Tipo de Veiculo Criado: {veriVeiculo}\n" +
+                       $"Marca do/a {veriVeiculo}: {veiculoAtual.marca}\n" +
+                       $"Modelo do/a {veriVeiculo}: {veiculoAtual.modelo}\n" +
+                       $"Potência do/a {veriVeiculo}: {Potencia.ToString()}\n" +
+                       $"Placa do/a {veriVeiculo}: {veiculoAtual.Placa}\n" +
+                       $"Tipo de Combustível do/a {veriVeiculo}: {cbTipoCombustivel.SelectedItem.ToString()}");
 
                 if (rdCarro.Checked == true) { veriVeiculo = c1.typeVeiculo; }
                 else if (rdMota.Checked == true) { veriVeiculo = m1.typeVeiculo; }
                 else if (rdCamioneta.Checked == true) { veriVeiculo = cam1.typeVeiculo; }
                 else { MessageBox.Show("Crie um veiculo para ver o tipo de User"); }
-            }
-            catch ( Exception ex)
-            {
-                MessageBox.Show($"Por favor preencha os campos Necessários {ex}");
-            }
+            
         }
         //
         //Secção dos KeyPress
